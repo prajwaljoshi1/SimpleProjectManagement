@@ -1,15 +1,36 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
+                                  //navbar
 .navbar {
     margin-bottom: 0px;
+    background-color: #2e3d50;
+    font-size: 1.4em;
+    border: 0px;
+    border-radius: 0px;
 }
 
+.navbar-fixed-top {
+    min-height: 80px;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: #ffffff;
+}
+
+.nav.navbar-nav li a {
+    color: #ffffff;
+}
+
+
+                                  // jumbotron
 .jumbotron{
     height: 100vh;
+    background-color: #1f8dd6;
+    color:#ffffff;
 }
 
+                                //button
 .btn{
   border-radius: 0px;
 }
