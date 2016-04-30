@@ -22,6 +22,7 @@ $(document).ready(function() {
   var trProjects = app.projects.fetch();
 
 
+
   $.when(trUsers, trProjects).then( function() {
     // console.log("LIST OF USERS BELOW"); console.log(app.users.toJSON()); console.log("------------------------");
     // console.log("LIST OF PROJECTS BELOW"); console.log(app.projects.toJSON()); console.log("------------------------");

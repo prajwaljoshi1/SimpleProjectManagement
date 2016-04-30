@@ -59,3 +59,18 @@ user_project5 = UserProject.create(user_id: 1, project_id: 2)
 user_project6 = UserProject.create(user_id: 2, project_id: 3)
 user_project7 = UserProject.create(user_id: 3, project_id: 2)
 user_project8 = UserProject.create(user_id: 3, project_id: 3)
+
+
+
+# create_table "task_lists", force: :cascade do |t|
+#   t.string   "title"
+#   t.integer  "project_id"
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
+# end
+
+
+list1 = TaskList.create(title:"todo",project_id:1)
+list2 = TaskList.create(title:"in progress",project_id:1)
+list3 = TaskList.create(title:"backlog",project_id:1)
+list4 = TaskList.create(title:"done",project_id:1)
