@@ -1,1 +1,22 @@
-<h1>Backbone-Rails-Project-Management</h1>
+<!-- pass current user id from rails to backbone -->
+<script>
+     var app = app || {};
+     <% if current_user  %>
+       app.current_user = <%= current_user.id %>
+    <% end %>
+</script>
+
+
+<div id="main"></div>
+
+
+
+<!-- MY Projects Page Template-->
+<script id="my-projects-page" type="text/template">
+
+<h2 class ="page-heading">My Projects</h2>
+
+
+
+
+</script>
