@@ -18,11 +18,14 @@ $(document).ready(function() {
  app.users = new app.Users();
   var trUsers = app.users.fetch();
 
+  app.projects = new app.Projects();
+  var trProjects = app.projects.fetch();
+
 
   $.when(trUsers).then( function() {
-    console.log("LIST OF USERS BELOW");
-    console.log(app.users.toJSON());
-    console.log("------------------------");
+    //console.log("LIST OF USERS BELOW");
+    //console.log(app.users.toJSON());
+    //console.log("------------------------");
     app.router = new app.AppRouter();
     Backbone.history.start();
 
