@@ -3,6 +3,15 @@ class UsersController < ApplicationController
   before_action :require_same_user, only: [:edit, :update]
   before_action :require_admin, only: [:destroy]
 
+
+  #only pass json
+  def index
+    @users = User.all
+    render json: @users, status: :ok
+  end
+
+
+
   def new
     @user = User.new
   end
