@@ -17,6 +17,30 @@
 <h2 class ="page-heading">My Projects</h2>
 
 
-
+<ul class="boards-list">
+  {{ projects.each(function (project) { }}
+    <li>
+      <a href="/#projects/{{= project.id }}">
+        {{= project.escape('title') }}
+      </a>
+    </li>
+  {{ }); }}
+</ul>
 
 </script>
+
+<!-- <h3>Create New Board</h3>
+
+<div class="create_board">
+  <form class="create_board">
+    <input type="text"
+           class="board_name"
+           name="board[name]"
+           placeholder="Board Name ..." />
+    <input type="text"
+           class="board_description"
+           name="board[description]"
+           placeholder="Board Description ..." />
+    <input type="submit" value="Create Board" />
+  </form>
+</div> -->

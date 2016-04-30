@@ -36,6 +36,26 @@ user4 = User.create(name: 'Tom Hardy',  email: "bill@rocketmail.com",    passwor
 Project.destroy_all()
 
 project1 = Project.create(title: 'The next big Thing',  description: "Suspendisse iaculis at lectus sit amet aliquam. Mauris at laoreet turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam eget elit velit.",   organisation: "Praj Corp", project_owner_id:1 )
-project2 = Project.create(title: 'Instagram-Facebook merge 2020',  description: "Suspendisse iaculis at lectus sit amet aliquam. Mauris at laoreet turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam eget elit velit.",    organisation: "Facebook", project_owner_id:3)
-project3 = Project.create(title: 'Playstation 5',  description: "Suspendisse iaculis at lectus sit amet aliquam. Mauris at laoreet turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam eget elit velit.",    organisation: "SONY Computer Entertainment", project_owner_id:1)
+project2 = Project.create(title: 'Instagram-Facebook merge 2020',  description: "Suspendisse iaculis at lectus sit amet aliquam. Mauris at laoreet turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam eget elit velit.",    organisation: "Facebook", project_owner_id:2)
+project3 = Project.create(title: 'Playstation 5',  description: "Suspendisse iaculis at lectus sit amet aliquam. Mauris at laoreet turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam eget elit velit.",    organisation: "SONY Computer Entertainment", project_owner_id:3)
 project4 = Project.create(title: 'Iphone 7',  description: "Suspendisse iaculis at lectus sit amet aliquam. Mauris at laoreet turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam eget elit velit.",    organisation: "Apple",project_owner_id:3)
+
+
+
+# create_table "user_projects", force: :cascade do |t|
+#   t.integer  "user_id"
+#   t.integer  "project_id"
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
+# end
+
+UserProject.destroy_all()
+
+user_project1 = UserProject.create(user_id: 1, project_id: 1)
+user_project2 = UserProject.create(user_id: 2, project_id: 1)
+user_project3 = UserProject.create(user_id: 3, project_id: 1)
+user_project4 = UserProject.create(user_id: 4, project_id: 1)
+user_project5 = UserProject.create(user_id: 1, project_id: 2)
+user_project6 = UserProject.create(user_id: 2, project_id: 3)
+user_project7 = UserProject.create(user_id: 3, project_id: 2)
+user_project8 = UserProject.create(user_id: 3, project_id: 3)

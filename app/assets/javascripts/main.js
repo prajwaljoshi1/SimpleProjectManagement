@@ -10,8 +10,8 @@ var app = app || {};
 
 $(document).ready(function() {
 
- //console.log("DOCUMENT READY");
- //console.log("LOGGED IN USER ID: ",app.current_user);
+ console.log("DOCUMENT READY");
+ console.log("LOGGED IN USER ID: ",app.current_user);
 
 
 
@@ -22,10 +22,9 @@ $(document).ready(function() {
   var trProjects = app.projects.fetch();
 
 
-  $.when(trUsers).then( function() {
-    //console.log("LIST OF USERS BELOW");
-    //console.log(app.users.toJSON());
-    //console.log("------------------------");
+  $.when(trUsers, trProjects).then( function() {
+    // console.log("LIST OF USERS BELOW"); console.log(app.users.toJSON()); console.log("------------------------");
+    // console.log("LIST OF PROJECTS BELOW"); console.log(app.projects.toJSON()); console.log("------------------------");
     app.router = new app.AppRouter();
     Backbone.history.start();
 
