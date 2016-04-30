@@ -17,15 +17,21 @@
 <h2 class ="page-heading">My Projects</h2>
 
 
-<ul class="boards-list">
+<div class="my-projects" style="overflow: auto">
+  <div class="row-fluid">
   {{ projects.each(function (project) { }}
-    <li>
-      <a href="/#projects/{{= project.id }}">
-        {{= project.escape('title') }}
-      </a>
-    </li>
+  <a  class="project-link" href="/#projects/{{= project.id }}">
+    <div class="col-sm-3 well project-display">
+        <div class="project-title">{{= project.escape('title') }}</div>
+        <hr>
+        <div class="project-organisation">{{= project.escape('organisation') }}</div>
+        <hr>
+        <div class="project-description">{{= project.escape('description') }}</div>
+    </div>
+    </a>
   {{ }); }}
-</ul>
+</div>
+</div>
 
 </script>
 

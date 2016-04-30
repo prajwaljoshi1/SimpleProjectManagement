@@ -1,3 +1,43 @@
 #logo{
   color:#ffffff;
 }
+
+//fluid horizontal slide
+.row-fluid{
+  white-space: nowrap;
+}
+
+.row-fluid .col-sm-3{
+  display: inline-block;
+}
+
+
+
+
+//project display page
+
+.project-display:hover{
+  background-color:#FFFFFF;
+}
+.project-display{
+
+  margin:10px;
+  min-height: 250px;
+  background-color:#dcdcdc;
+}
+
+.project-organisation{
+  white-space: initial;
+  font-size:0.7em;
+  font-weight: bold;
+}
+
+.project-title{
+  white-space: initial;
+}
+
+
+.project-description{
+  white-space: initial;
+  font-size:0.6em;
+}
