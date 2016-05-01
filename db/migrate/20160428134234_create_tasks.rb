@@ -5,7 +5,9 @@ class CreateTasks < ActiveRecord::Migration
       t.text :description
       t.date :due_date
       t.string :color
-      t.integer :Tasklist_id
+      t.integer :task_list_id
+      t.integer :task_owner_id
+      t.integer :position
 
       t.timestamps null: false
     end

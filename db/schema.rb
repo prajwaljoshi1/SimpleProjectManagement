@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 20160428140252) do
   create_table "task_lists", force: :cascade do |t|
     t.string   "title"
     t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "task_list_owner_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "position"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -37,9 +39,11 @@ ActiveRecord::Schema.define(version: 20160428140252) do
     t.text     "description"
     t.date     "due_date"
     t.string   "color"
-    t.integer  "Tasklist_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "task_list_id"
+    t.integer  "task_owner_id"
+    t.integer  "position"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "user_projects", force: :cascade do |t|
