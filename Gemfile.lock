@@ -20,6 +20,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_model_serializers (0.9.5)
+      activemodel (>= 3.2)
     activejob (4.2.6)
       activesupport (= 4.2.6)
       globalid (>= 0.3.0)
@@ -47,6 +49,8 @@ GEM
       ejs
       jquery-rails
       railties
+    backbone-relational-rails (0.10.0)
+      railties (>= 3.1)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -172,8 +176,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   annotate
   backbone-on-rails
+  backbone-relational-rails
   bcrypt (~> 3.1.7)
   bootstrap-sass
   byebug

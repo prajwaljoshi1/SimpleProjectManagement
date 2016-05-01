@@ -38,6 +38,16 @@
 
 <script id="project-page" type="text/template">
     <h2>{{= project.escape('title')}}</h2>
+
+    <div class="my-projects" style="overflow: auto">
+      <div class="row-fluid">
+      {{ tasklists.each(function (list) { }}
+        <div class="col-sm-3 well project-display">
+            <div class="list-title">{{= list.escape('title') }}</div>
+        </div>
+      {{ }); }}
+    </div>
+    </div>
 </script>
 
 

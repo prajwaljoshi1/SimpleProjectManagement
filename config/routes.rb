@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get '/projects' => 'projects#index'
 
-  get '/lists' => 'list#index'
+  get '/tasklists' => 'task_lists#index'
 
 
 
