@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/tasklists' => 'task_lists#index'
 
+  get '/tasks' => 'tasks#index'
+
 
 
   get '/login' => 'session#new'

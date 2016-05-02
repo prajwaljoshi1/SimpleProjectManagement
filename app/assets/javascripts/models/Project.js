@@ -3,7 +3,6 @@ var app = app || {};
 app.Project = Backbone.RelationalModel.extend({
   urlRoot: '/projects',
 
-
   relations:[{
     type: Backbone.HasMany,
     key: 'task_lists',

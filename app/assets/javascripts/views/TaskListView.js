@@ -2,20 +2,33 @@ var app = app || {}
 
 app.TaskListView = Backbone.View.extend({
 
+
   render:function(){
     var self = this;
 
     var taskList = this.model;
-    var taskListId = taskList.get('id');
+    //var tasks = new app.Tasks( taskList.get('tasks') );
+    var tasks = taskList.get('tasks')
 
-    // console.log("HI FROM TASK LIST VIEW");
-    // console.log(taskListId);
+
+
+
 
 
     var individialListTemplate = _.template($('#individual-list').html());
     var html = individialListTemplate({taskList: this.model});
     this.$el.html(html);
     this.$el.appendTo('.list');
+
+
+    if(tasks.length > 0){
+      tasks.each(function (task) {
+        var taskView = new app.TaskView({
+          model: task
+          });
+        self.$('.task').append(taskView.render());
+      });
+  }
     return this.$el;
   }
 });
