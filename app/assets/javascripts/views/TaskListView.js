@@ -2,6 +2,15 @@ var app = app || {}
 
 app.TaskListView = Backbone.View.extend({
 
+  events:{
+      'click .add-task-button':'addTask'
+  },
+
+
+  addTask:function(){
+      console.log("NEW CARD ADDED");
+  },
+
 
   render:function(){
     var self = this;
@@ -9,11 +18,6 @@ app.TaskListView = Backbone.View.extend({
     var taskList = this.model;
     //var tasks = new app.Tasks( taskList.get('tasks') );
     var tasks = taskList.get('tasks')
-
-
-
-
-
 
     var individialListTemplate = _.template($('#individual-list').html());
     var html = individialListTemplate({taskList: this.model});

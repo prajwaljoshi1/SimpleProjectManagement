@@ -9,7 +9,6 @@ app.TaskView = Backbone.View.extend({
         var task = this.model;
         var title = task.get('title');
         console.log(title);
-        debugger;
         var individualTaskTemplate = _.template($('#individual-task').html());
         var html = individualTaskTemplate({task:this.model});
         this.$el.html(html);
