@@ -46,7 +46,7 @@
 
 
 <script id="individual-list" type="text/template">
-  <div class="task-list col-sm-3 well ">
+  <div class="task-list col-sm-3 well id="list{{=taskList.id}}" ">
     <div class="list-name">{{=taskList.escape('title')}}</div>
     <div class="task"></div>
   </div>
@@ -55,7 +55,7 @@
 
 
 <script id="individual-task" type="text/template">
-  <div class="well ">
+  <div class="well id="task{{=task.id}}" ">
     <div class="list-name">{{=task.escape('title')}}</div>
   </div>
 </script>
