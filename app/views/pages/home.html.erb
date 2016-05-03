@@ -46,18 +46,18 @@
 
 
 <script id="individual-list" type="text/template">
-  <div class="task-list col-sm-3 well id="list{{=taskList.id}}" ">
+  <div class="task-list col-sm-3 well" id="list{{=taskList.id}}" data-tasklist-id="{{=taskList.id}}" >
     <div class="list-name">{{=taskList.escape('title')}}</div>
 
     <div class="task"></div>
 
     <div class="add-task well">
-      <form class="form-control " id="list{{=taskList.id}}">
+      <form class="add-task form-control " id="list{{=taskList.id}}">
         <input type="text"
            class="task-title"
-           name="task[title]"
+           id="add-task"
            placeholder="Add a task ..." />
-        <button class="add-task-button" class="btn btn-primary btn-xs"> + </button>
+        <input type="submit" value=" + " data-tasklist-id="{{=taskList.id}}" class="add-task-button" class="btn btn-primary btn-xs"/>
     </form>
   </div>
   </div>

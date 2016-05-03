@@ -10,6 +10,25 @@ class TasksController < ApplicationController
   end
 
   def create
-  end
+     task = Task.new(task_params)
+     if task.save
+       render json: task, status: :ok
+     else
+       render nothing: true, status: :unprocessable_entity
+     end
+   end
+
+
+   private
+   def task_params
+     params.require(:task)
+            .permit(:title,
+                    :description,
+                    :due_date,
+                    :task_list_id,
+                    :position,
+                    :color,
+                    :task_owner_id)
+    end
 
 end

@@ -2,8 +2,14 @@ var app = app || {};
 
 app.ProjectView = Backbone.View.extend({
   initialize:function(){
-    //console.log(this.model.toJSON());
+    this.listenTo(this.model, 'sync', this.refresh);
+
   },
+
+  refresh:function(){
+    console.log("REFRESH Project");
+  },
+
 
   el: "#main",
 
