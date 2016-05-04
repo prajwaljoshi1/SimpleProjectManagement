@@ -2,13 +2,16 @@ var app = app || {}
 
 app.TaskListView = Backbone.View.extend({
 
+  //tagname: 'ul',
 
 
 
   initialize:function(){
-     this.model.get('tasks').on('add', this.render,this);
 
+     this.model.get('tasks').on('add', this.render,this);
   },
+
+
 
 
 
@@ -17,15 +20,6 @@ app.TaskListView = Backbone.View.extend({
   },
 
 
-
-  // createSecret: function () {
-  // var secret = new app.Secret();
-  // var userContent = this.$el.find("#secretContent").val();
-  // secret.set({
-  //   content: userContent
-  // });
-  // secret.save(); // Saves it to the server - POST /secrets
-  // app.secrets.add( secret );
 
 
   addTask:function(e){
@@ -50,9 +44,6 @@ app.TaskListView = Backbone.View.extend({
         });
       task.save(); // Saves it to the server - POST /secrets
       tasks.add( task );
-      // app.projects.fetch().done(function(){
-      //   app.
-      // });
     }
   },
 
