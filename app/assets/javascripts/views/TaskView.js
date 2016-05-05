@@ -4,19 +4,24 @@ var app = app || {}
 
 app.TaskView = Backbone.View.extend({
 
+  tagName:'li',
+
   initialize:function(){
+
     //this.model.on('add', this.render, this);
-    this.$el.sortable({
-           placeholder :"sortable-placeholder",
-           update: function(event, ui){
-             self.taskUpdate();
-           }
-         });
+    // var self = this;
+    // this.$el.sortable({
+    //        placeholder :"sortable-placeholder",
+    //        update: function(event, ui){
+    //          self.taskUpdate();
+    //
+    //        }
+    //      });
   },
 
-  taskUpdate:function(){
-    console.log("TASK CHANGED");
-  },
+  // taskUpdate:function(){
+  //   console.log("TASK CHANGED");
+  // },
 
 
     render:function(){

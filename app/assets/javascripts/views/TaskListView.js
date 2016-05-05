@@ -12,15 +12,9 @@ app.TaskListView = Backbone.View.extend({
   },
 
 
-
-
-
   events:{
       'submit form.add-task':'addTask'
   },
-
-
-
 
   addTask:function(e){
       event.preventDefault();
@@ -69,6 +63,31 @@ app.TaskListView = Backbone.View.extend({
         self.$('.task').append(taskView.render());
       });
   }
+
+  //sortCardsUrl = '/api/cards/sort'
+    var $tasks = this.$('.task');
+    debugger;
+    $tasks.sortable({
+      items: '.task',
+      connectWith: '.task',
+      delay: 125,
+      tolerance: 'pointer',
+      placeholder: 'task-placeholder',
+
+      start: function (e, ui) {
+        //ui.placeholder.width(ui.item.width());
+        //ui.placeholder.height(ui.item.height());
+        debugger;
+      },
+
+      update: function (event, ui) {
+
+        var sortData = $(this).sortable('serialize');
+        debugger;
+      }
+    });
+
+
     return this.$el;
   }
 });
