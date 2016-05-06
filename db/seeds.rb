@@ -91,7 +91,7 @@ list4 = TaskList.create(title:"done",project_id:1)
 
 Task.destroy_all();
 
-task1 = Task.create(title:"Turn off the alarm", description:"Turn of the god damn alarm", due_date:"11/11/16",color:"red",task_list_id:1 )
-task2 = Task.create(title:"Brush teeth", description:"Brush your teeth", due_date:"12/12/16",color:"white",task_list_id:1 )
-task3 = Task.create(title:"Make Coffee", description:"make coffee", due_date:"08/09/16",color:"red",task_list_id:1 )
-task4 = Task.create(title:"style hair", description:"Style your hair", due_date:"01/01/17",color:"blue",task_list_id:1 )
+task1 = Task.create(title:"2 Turn off the alarm", description:"Turn of the god damn alarm", due_date:"11/11/16",color:"red",task_list_id:1, position:2 )
+task2 = Task.create(title:"1 Brush teeth", description:"Brush your teeth", due_date:"12/12/16",color:"white",task_list_id:1, position:1 )
+task3 = Task.create(title:"3 Make Coffee", description:"make coffee", due_date:"08/09/16",color:"red",task_list_id:1, position:3 )
+task4 = Task.create(title:"4style hair", description:"Style your hair", due_date:"01/01/17",color:"blue",task_list_id:1, position:4 )

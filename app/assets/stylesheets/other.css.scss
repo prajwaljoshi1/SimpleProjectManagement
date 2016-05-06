@@ -42,21 +42,25 @@
   font-size:0.6em;
 }
 
-.my-tasklists{
+.list-of-tasklist{
+  white-space: nowrap; /* important */
+  overflow: auto;
+}
 
+ // .list-of-tasks{
+ //   float:left;
+ //   display: inline-block;
+ // }
+
+ .task{
+   min-height: 40px;
  }
-
-//  .row-fluid{
-//     white-space: nowrap !important;
-// }
-//
-// .row-fluid .col-lg-3{
-//     display: inline-block !important;
-// }
-
 
 
 .task-list{
+
+    vertical-align:top;
+    display: inline-block;
     width:300px;
     margin:10px;
     color: #2e3d50;

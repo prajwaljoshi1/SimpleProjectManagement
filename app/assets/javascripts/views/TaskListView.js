@@ -2,13 +2,16 @@ var app = app || {}
 
 app.TaskListView = Backbone.View.extend({
 
-  //tagname: 'ul',
-
+  className:'task-list',
 
 
   initialize:function(){
 
-     this.model.get('tasks').on('add', this.render,this);
+     this.model.get('tasks').on('add',this.reRender,this);
+  },
+
+  reRender:function(){
+      this.render();
   },
 
 
@@ -55,35 +58,34 @@ app.TaskListView = Backbone.View.extend({
     this.$el.appendTo('.list');
 
 
-    if(tasks.length > 0){
+    tasks.comparator = function(tasks){
+        return tasks.get('position');
+      }
+       tasks.sort();
       tasks.each(function (task) {
+
+        //debugger;
         var taskView = new app.TaskView({
           model: task
           });
         self.$('.task').append(taskView.render());
       });
-  }
 
-  //sortCardsUrl = '/api/cards/sort'
+
     var $tasks = this.$('.task');
-    debugger;
     $tasks.sortable({
-      items: '.task',
       connectWith: '.task',
-      delay: 125,
+      delay: 200,
       tolerance: 'pointer',
-      placeholder: 'task-placeholder',
+      //placeholder: 'task-placeholder',
 
-      start: function (e, ui) {
-        //ui.placeholder.width(ui.item.width());
-        //ui.placeholder.height(ui.item.height());
-        debugger;
+      start: function (event, ui) {
+
       },
 
       update: function (event, ui) {
 
         var sortData = $(this).sortable('serialize');
-        debugger;
       }
     });
 
