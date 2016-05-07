@@ -50,7 +50,7 @@ app.TaskListView = Backbone.View.extend({
 
     var taskList = this.model;
     //var tasks = new app.Tasks( taskList.get('tasks') );
-    var tasks = taskList.get('tasks');
+    var taskcollection = taskList.get('tasks');
 
     var individialListTemplate = _.template($('#individual-list').html());
     var html = individialListTemplate({taskList: this.model});
@@ -58,11 +58,11 @@ app.TaskListView = Backbone.View.extend({
     this.$el.appendTo('.list');
 
 
-    tasks.comparator = function(tasks){
-        return tasks.get('position');
+    taskcollection.comparator = function(tasks){
+        return taskcollection.get('position');
       }
-       tasks.sort();
-      tasks.each(function (task) {
+       taskcollection.sort();
+      taskcollection.each(function (task) {
 
         //debugger;
         var taskView = new app.TaskView({
@@ -74,18 +74,45 @@ app.TaskListView = Backbone.View.extend({
 
     var $tasks = this.$('.task');
     $tasks.sortable({
+      items: 'div.well',
       connectWith: '.task',
       delay: 200,
       tolerance: 'pointer',
       //placeholder: 'task-placeholder',
 
       start: function (event, ui) {
-
+        // listId_str = $(event.target).parent().attr('id').replace ( /[^\d.]/g, '' );
+        // listId = parseInt(listId_str);
+        // console.log("DRAG FROM: ",listId);
+        // console.log(ui.item.index());
       },
 
       update: function (event, ui) {
 
-        var sortData = $(this).sortable('serialize');
+         var taskSortData = $(this).sortable('serialize');
+         listId_str = $(event.target).parent().attr('id').replace ( /[^\d.]/g, '' );
+         listId = parseInt(listId_str);
+         taskSortData += '&list_id=' + listId;
+
+          //console.log(taskSortData);
+          //ajax for now,   try to use backbone while refactoring......................................(!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
+          $.post('tasks/sort', taskSortData, function (resortedCards) {
+            var tasks = tasklists.get('tasks');
+            tasks.reset(resortedTaskss.tasks);
+          });
+      },
+
+      receive: function(event, ui){
+
+      //   listId_str = $(event.target).parent().attr('id').replace ( /[^\d.]/g, '' );
+      //   listId = parseInt(listId_str);
+      //   console.log("DROP TO: ",listId);
+      //   console.log(ui.item.index());
+      //   var itemChildId = ui.item.children().first().attr('id');
+      // //  console.log(itemChildId);
+      //
+      //  //tasks where
+
       }
     });
 
