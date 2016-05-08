@@ -33,14 +33,18 @@
 </div>
 </div>
 
+<div>
+  <%= link_to "Add New Project", project_new_path, class: "add-project-btn btn btn-default btn-lg" %>
+</div>
+
 </script>
 
 
 <script id="project-page" type="text/template">
     <h2>{{= project.escape('title')}}</h2>
 
-    <div class="list-of-tasklist">
-        <span class="my-tasklists list "></span>
+    <div class="list-of-tasklist" id = "project{{=project.id}}">
+        <span class="my-tasklists list"></span>
 
 
       <span class=" task-list add-list well">
@@ -58,7 +62,7 @@
 
 
 <script id="individual-list" type="text/template">
-  <div class=" well" id="list-{{=taskList.id}}" data-tasklist-id="{{=taskList.id}}" >
+  <div class="well" id="list-{{=taskList.id}}" data-tasklist-id="{{=taskList.id}}" >
     <div class="list-name">{{=taskList.escape('title')}}</div>
 
     <div class="task"></div>

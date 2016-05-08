@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   resources :users, except: [:new]
 
   get '/projects' => 'projects#index'
+  get '/project/new' => 'projects#new'
 
   get '/tasklists' => 'task_lists#index'
   post '/tasklists' => 'task_lists#create'
+  post '/tasklists/sort' => 'task_lists#sort'
 
   get '/tasks' => 'tasks#index'
   post '/task' => 'tasks#create'

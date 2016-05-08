@@ -38,7 +38,6 @@ app.TaskListView = Backbone.View.extend({
           task_list_id:tasklist_id ,
           task_owner_id:taskOwnerId
         });
-        debugger;
       task.save(); // Saves it to the server - POST /secrets
       tasks.add(task);
     }
@@ -46,6 +45,21 @@ app.TaskListView = Backbone.View.extend({
 
 
   render:function(){
+
+
+    // render: function(){
+    //     var html = this.template(this.model.toJSON()));
+    //     var newElement = $(html)
+    //     this.$el.replaceWith(newElement);
+    //     this.setElement(newElement);
+    //     return this;
+    // }
+
+
+
+
+
+
     var self = this;
 
     var taskList = this.model;
@@ -95,9 +109,9 @@ app.TaskListView = Backbone.View.extend({
           //console.log(taskSortData);
           //ajax for now,   try to use backbone while refactoring......................................(!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
           if(taskSortData){
-          $.post('tasks/sort', taskSortData, function (resortedTasks) {
+          $.post('tasks/sort', taskSortData, function (sortedTasks) {
             var tasks = taskList.get('tasks');
-            tasks.reset(resortedTasks.tasks);
+            tasks.reset(sortedTasks.tasks);
           });
         }
       },
