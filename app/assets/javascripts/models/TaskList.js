@@ -1,8 +1,8 @@
 var app = app || {}
 
 app.TaskList = Backbone.RelationalModel.extend({
-  urlroot: '/tasklists',
-  //idAttributes: "id"
+  urlRoot: '/tasklists',
+
   relations:[{
     type: Backbone.HasMany,
     key: 'tasks',

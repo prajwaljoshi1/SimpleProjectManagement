@@ -39,20 +39,20 @@
 <script id="project-page" type="text/template">
     <h2>{{= project.escape('title')}}</h2>
 
-        <div class="my-tasklists list list-of-tasklist"></div>
+    <div class="list-of-tasklist">
+        <span class="my-tasklists list "></span>
 
 
-        <!-- <div class="add-listwell">
-          <form class="add-list form-control " id="tasklist{{=project.id}}">
+      <span class=" task-list add-list well">
+          <form class="add-task-list form-control " id="tasklist{{=project.id}}">
             <input type="text"
                class="task-title"
                id="add-list"
                placeholder="Add a list" />
             <input type="submit" value=" + " data-project-id="{{=project.id}}" class="add-list-button" class="btn btn-primary btn-xs"/>
         </form>
-        </div> -->
-
-
+      </span>
+    </div>
 </script>
 
 
@@ -73,7 +73,6 @@
     </form>
   </div>
   </div>
-
 </script>
 
 

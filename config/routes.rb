@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   get '/projects' => 'projects#index'
 
   get '/tasklists' => 'task_lists#index'
+  post '/tasklists' => 'task_lists#create'
 
   get '/tasks' => 'tasks#index'
   post '/task' => 'tasks#create'
+  post '/tasks/sort' => 'tasks#sort'
 
 
 

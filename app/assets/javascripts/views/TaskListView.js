@@ -11,7 +11,7 @@ app.TaskListView = Backbone.View.extend({
   },
 
   reRender:function(){
-      this.render();
+       this.render();
   },
 
 
@@ -21,26 +21,26 @@ app.TaskListView = Backbone.View.extend({
 
   addTask:function(e){
       event.preventDefault();
-      taskOwnerId = app.current_user
+      taskOwnerId = app.current_user;
       tasklist_id = this.model.get('id');
       var tasklist = this.model;
       var taskTitle = this.$el.find("#add-task").val();
 
       var tasks = tasklist.get('tasks');
       var task = new app.Task();
-      console.log("tt",taskTitle);
       if(taskTitle !== ""){
         task.set({
           title:taskTitle,
           description:"NO DISCRIPTION YET",
           //due_date:
           //color:
-          //position:
+          position:999,
           task_list_id:tasklist_id ,
           task_owner_id:taskOwnerId
         });
+        debugger;
       task.save(); // Saves it to the server - POST /secrets
-      tasks.add( task );
+      tasks.add(task);
     }
   },
 
@@ -56,8 +56,6 @@ app.TaskListView = Backbone.View.extend({
     var html = individialListTemplate({taskList: this.model});
     this.$el.html(html);
     this.$el.appendTo('.list');
-
-
     taskcollection.comparator = function(tasks){
         return taskcollection.get('position');
       }
@@ -78,13 +76,14 @@ app.TaskListView = Backbone.View.extend({
       connectWith: '.task',
       delay: 200,
       tolerance: 'pointer',
-      //placeholder: 'task-placeholder',
 
       start: function (event, ui) {
         // listId_str = $(event.target).parent().attr('id').replace ( /[^\d.]/g, '' );
         // listId = parseInt(listId_str);
         // console.log("DRAG FROM: ",listId);
         // console.log(ui.item.index());
+        ui.placeholder.width(ui.item.width());
+        ui.placeholder.height(ui.item.height());
       },
 
       update: function (event, ui) {
@@ -93,13 +92,14 @@ app.TaskListView = Backbone.View.extend({
          listId_str = $(event.target).parent().attr('id').replace ( /[^\d.]/g, '' );
          listId = parseInt(listId_str);
          taskSortData += '&list_id=' + listId;
-
           //console.log(taskSortData);
           //ajax for now,   try to use backbone while refactoring......................................(!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
-          $.post('tasks/sort', taskSortData, function (resortedCards) {
-            var tasks = tasklists.get('tasks');
-            tasks.reset(resortedTaskss.tasks);
+          if(taskSortData){
+          $.post('tasks/sort', taskSortData, function (resortedTasks) {
+            var tasks = taskList.get('tasks');
+            tasks.reset(resortedTasks.tasks);
           });
+        }
       },
 
       receive: function(event, ui){

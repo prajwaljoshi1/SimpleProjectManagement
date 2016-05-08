@@ -13,5 +13,5 @@
 #
 
 class Task < ActiveRecord::Base
-  has_one  :task_list
+  belongs_to  :task_list
 end
