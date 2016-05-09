@@ -8,6 +8,7 @@ class CreateTasks < ActiveRecord::Migration
       t.integer :task_list_id
       t.integer :task_owner_id
       t.integer :position
+      t.string :alias
 
       t.timestamps null: false
     end

@@ -17,7 +17,9 @@ body{
 }
 
 
-
+input:focus {
+  outline: none;
+}
 
 //project display page
 
@@ -71,4 +73,9 @@ body{
     font:2em;
     font-weight: bold;
     text-align:center;
+}
+
+.task-alias{
+  background-color: #dcdcdc;
+  padding: 3px;
 }

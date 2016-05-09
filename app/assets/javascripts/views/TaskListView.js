@@ -7,7 +7,7 @@ app.TaskListView = Backbone.View.extend({
 
   initialize:function(){
 
-     this.model.get('tasks').on('add',this.reRender,this);
+     this.model.get('tasks').on('change',this.reRender,this);
   },
 
   reRender:function(){
@@ -36,7 +36,8 @@ app.TaskListView = Backbone.View.extend({
           //color:
           position:999,
           task_list_id:tasklist_id ,
-          task_owner_id:taskOwnerId
+          task_owner_id:taskOwnerId,
+          alias: app.user_alias
         });
       task.save(); // Saves it to the server - POST /secrets
       tasks.add(task);

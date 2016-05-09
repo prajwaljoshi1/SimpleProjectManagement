@@ -14,6 +14,8 @@ app.TaskView = Backbone.View.extend({
 
         var task = this.model;
         var title = task.get('title');
+        var alias = task.get('alias');
+        debugger;
         var id = task.get('id');
         if(!id)
         debugger;

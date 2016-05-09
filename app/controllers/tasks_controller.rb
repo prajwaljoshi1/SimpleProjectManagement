@@ -43,7 +43,8 @@ class TasksController < ApplicationController
                     :task_list_id,
                     :position,
                     :color,
-                    :task_owner_id)
+                    :task_owner_id,
+                    :alias)
     end
 
 end

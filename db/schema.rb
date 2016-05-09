@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160428140252) do
     t.integer  "task_list_id"
     t.integer  "task_owner_id"
     t.integer  "position"
+    t.string   "alias"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

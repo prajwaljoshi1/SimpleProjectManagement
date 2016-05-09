@@ -3,7 +3,7 @@ var app = app || {};
 app.ProjectView = Backbone.View.extend({
   initialize: function() {
     //this.listenTo(this.model, 'sync', this.reRender);
-    this.model.get('task_lists').on('add', this.reRender, this);
+    this.model.get('task_lists').on('change', this.reRender, this);
 
   },
 

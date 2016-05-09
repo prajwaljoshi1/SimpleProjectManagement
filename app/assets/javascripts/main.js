@@ -15,8 +15,10 @@ $(document).ready(function() {
 
 
 
- app.users = new app.Users();
-  var trUsers = app.users.fetch();
+ app.user = new app.User({id: app.current_user});
+  var trUser = app.user.fetch();
+
+
 
   app.projects = new app.Projects();
   var trProjects = app.projects.fetch();
@@ -25,10 +27,14 @@ $(document).ready(function() {
   //  var trLists = app.lists.fetch();
 
 
-  $.when(trUsers, trProjects ).then( function() {
-    // console.log("LIST OF USERS BELOW"); console.log(app.users.toJSON()); console.log("------------------------");
+  $.when(trUser, trProjects ).then( function() {
+     //console.log("details of current user"); console.log(app.user.toJSON()); console.log("------------------------");
      //console.log("LIST OF PROJECTS BELOW"); console.log(app.projects.toJSON()); console.log("------------------------");
-    //console.log("LIST OF LISTS"); console.log(app.lists.toJSON());
+     //console.log("LIST OF LISTS"); console.log(app.lists.toJSON());
+    app.username = app.user.attributes.user.name;
+    app.user_alias = app.username.match(/\b(\w)/g).join('');
+
+
     app.router = new app.AppRouter();
     Backbone.history.start();
 

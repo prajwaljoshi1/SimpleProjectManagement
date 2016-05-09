@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get '/projects' => 'projects#index'
   get '/project/new' => 'projects#new'
+  post 'projects'  => 'projects#create'
 
   get '/tasklists' => 'task_lists#index'
   post '/tasklists' => 'task_lists#create'

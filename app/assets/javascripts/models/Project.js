@@ -16,6 +16,6 @@ app.Project = Backbone.RelationalModel.extend({
     type: Backbone.HasMany,
     key: 'users',
     relatedModel: 'app.User',
-    collectionType: 'app.Uesrs'
+    collectionType: 'app.Users'
   }]
 });

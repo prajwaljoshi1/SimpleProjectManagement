@@ -14,7 +14,7 @@
 <!-- MY Projects Page Template-->
 <script id="my-projects-page" type="text/template">
 
-<h2 class ="page-heading">My Projects</h2>
+<h2 class ="page-heading">{{= app.user.attributes.user.name}}'s Projects</h2>
 
 
 <div class="my-projects" style="overflow: auto">
@@ -34,6 +34,7 @@
 </div>
 
 <div>
+  <!-- <button class="add-project-btn btn btn-default btn-lg">Add New Project</button> -->
   <%= link_to "Add New Project", project_new_path, class: "add-project-btn btn btn-default btn-lg" %>
 </div>
 
@@ -50,6 +51,7 @@
       <span class=" task-list add-list well">
           <form class="add-task-list form-control " id="tasklist{{=project.id}}">
             <input type="text"
+              style="border:none"
                class="task-title"
                id="add-list"
                placeholder="Add a list" />
@@ -70,6 +72,7 @@
     <div class="add-task well">
       <form class="add-task form-control " id="list{{=taskList.id}}">
         <input type="text"
+        style="border:none"
            class="task-title"
            id="add-task"
            placeholder="Add a task ..." />
@@ -84,5 +87,7 @@
 <script id="individual-task" type="text/template">
   <div class="well" id="task-{{=task.id}}">
     <div class="list-name">{{=task.escape('title')}}</div>
+    <div align="right"> <span class="task-alias">{{=task.escape('alias')}}</span> </div>
   </div>
+
 </script>
