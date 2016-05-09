@@ -79,8 +79,6 @@ app.TaskListView = Backbone.View.extend({
       }
       taskcollection.sort();
       taskcollection.each(function (task) {
-
-
         //debugger;
         var taskView = new app.TaskView({
           model: task

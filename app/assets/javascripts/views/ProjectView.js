@@ -10,7 +10,6 @@ app.ProjectView = Backbone.View.extend({
   },
 
   reRender: function() {
-    debugger;
     this.render();
   },
 
@@ -19,28 +18,7 @@ app.ProjectView = Backbone.View.extend({
     'submit form.add-task-list': 'addTaskList'
   },
 
-  addTaskList: function(event) {
-    // event.preventDefault();
-    // var project = this.model;
-    //
-    // var $form = $(event.target);
-    // debugger;
-    // var attrs = $form.serializeJSON();
-    // $form[0].reset();
-    //
-    // attrs.task_list.project_id = this.model.get('id');
-    // var taskList = new app.TaskList();
-    // var taskLists = project.get('task_lists');
-    //
-    // if(attrs.task_list.title){
-    //   taskList.save(attrs.taskList,{
-    //     success:function(data){
-    //       taskLists.add(taskList);
-    //     }
-    //   });
-    // }
-
-
+  addTaskList: function() {
     event.preventDefault();
     listOwnerId = app.current_user;
     projectId = this.model.get('id');
@@ -48,18 +26,21 @@ app.ProjectView = Backbone.View.extend({
     var listTitle = this.$el.find("#add-list").val();
     console.log(project);
     var taskLists = project.get('task_lists');
-    debugger;
     var taskList = new app.TaskList();
 
     if (listTitle !== "") {
       taskList.set({
         title: listTitle,
         project_id: projectId,
-        tasks: []
+        tasks: [],
+        position: 999,
       });
       //console.log(taskList.toJSON());
-      taskList.save();
-      taskLists.add(taskList);
+      taskList.save().done(function(){
+        taskLists.add(taskList);
+        debugger;
+      });
+
     }
   },
 

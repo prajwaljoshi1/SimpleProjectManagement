@@ -10,18 +10,16 @@ class TaskListsController < ApplicationController
   end
 
   def create
-    binding.pry
+      # binding.pry
       list = TaskList.new(task_list_params)
-    if list.save
-      render json: list, status: :ok,
-    else
-      binding.pry
-      render nothing: true, status: :unprocessable_entity
-    end
+      if list.save
+        render json: list, status: :ok
+      else
+        render nothing: true, status: :unprocessable_entity
+      end
   end
 
   def sort
-
     project = Project.find(params[:project_id]);
 
     task_list_id_arr = params[:list].map(&:to_i)
@@ -41,7 +39,7 @@ class TaskListsController < ApplicationController
   def task_list_params
 
     params.require(:task_list)
-          .permit(:title, :project_id)
+          .permit(:title, :project_id,:tasks , :postion)
 
   end
 
