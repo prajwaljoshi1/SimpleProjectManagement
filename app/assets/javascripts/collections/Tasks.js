@@ -2,11 +2,19 @@ var app = app || {};
 
 app.Tasks = Backbone.Collection.extend({
   initialize:function(){
-  
+
   },
   url: '/tasks',
-  model: app.Task
-   //comparator: 'positon'
+  model: app.Task,
+
+  initialize: function () {
+  this.on("add", function (task) {
+    var taskView = new app.TaskView({
+      model: task
+    });
+    taskView.render();
+  });
+}
 
 });
 

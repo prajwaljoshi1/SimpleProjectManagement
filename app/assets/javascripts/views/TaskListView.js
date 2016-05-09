@@ -2,24 +2,24 @@ var app = app || {}
 
 app.TaskListView = Backbone.View.extend({
 
-  className:'task-list',
-
+  className:'task-list well',
 
   initialize:function(){
-
+      this.model.on('add', this.render, this);
+     this.model.get('tasks').on('add',this.reRender,this);
      this.model.get('tasks').on('change',this.reRender,this);
+     //this.model('add', this.reRender, this);
   },
 
   reRender:function(){
        this.render();
   },
 
-
   events:{
       'submit form.add-task':'addTask'
   },
 
-  addTask:function(e){
+  addTask:function(event){
       event.preventDefault();
       taskOwnerId = app.current_user;
       tasklist_id = this.model.get('id');
@@ -32,15 +32,16 @@ app.TaskListView = Backbone.View.extend({
         task.set({
           title:taskTitle,
           description:"NO DISCRIPTION YET",
-          //due_date:
-          //color:
+          due_date: "NOT NOW",
+          color:"NOT NOW",
           position:999,
           task_list_id:tasklist_id ,
           task_owner_id:taskOwnerId,
           alias: app.user_alias
         });
-      task.save(); // Saves it to the server - POST /secrets
-      tasks.add(task);
+      task.save().done(function () {
+         tasks.add(task);
+       }); // Saves it to the server - POST
     }
   },
 
@@ -58,31 +59,35 @@ app.TaskListView = Backbone.View.extend({
 
 
 
-
-
-
     var self = this;
 
     var taskList = this.model;
     //var tasks = new app.Tasks( taskList.get('tasks') );
     var taskcollection = taskList.get('tasks');
 
+
+    var taskListId = taskList.get('id');
+    var id = "list-"+taskListId;
+    this.$el.attr('id', id);
     var individialListTemplate = _.template($('#individual-list').html());
     var html = individialListTemplate({taskList: this.model});
+
     this.$el.html(html);
     this.$el.appendTo('.list');
     taskcollection.comparator = function(tasks){
         return taskcollection.get('position');
       }
-       taskcollection.sort();
+      taskcollection.sort();
       taskcollection.each(function (task) {
+
 
         //debugger;
         var taskView = new app.TaskView({
           model: task
           });
-        self.$('.task').append(taskView.render());
+        self.$('.task').append(taskView.render().children('div'));
       });
+
 
 
     var $tasks = this.$('.task');
@@ -97,12 +102,11 @@ app.TaskListView = Backbone.View.extend({
         // listId = parseInt(listId_str);
         // console.log("DRAG FROM: ",listId);
         // console.log(ui.item.index());
-        ui.placeholder.width(ui.item.width());
-        ui.placeholder.height(ui.item.height());
+        // ui.placeholder.width(ui.item.width());
+        // ui.placeholder.height(ui.item.height());
       },
 
       update: function (event, ui) {
-
          var taskSortData = $(this).sortable('serialize');
          listId_str = $(event.target).parent().attr('id').replace ( /[^\d.]/g, '' );
          listId = parseInt(listId_str);
@@ -131,7 +135,7 @@ app.TaskListView = Backbone.View.extend({
       }
     });
 
-
+    //this.$el.unwrap();
     return this.$el;
   }
 });

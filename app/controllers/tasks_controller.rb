@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   def create
      task = Task.new(task_params)
      if task.save
-       render json: task, status: :ok
+       render json: task, status: :ok,  root: false
      else
        render nothing: true, status: :unprocessable_entity
      end

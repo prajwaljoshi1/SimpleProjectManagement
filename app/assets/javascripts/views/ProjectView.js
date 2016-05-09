@@ -1,9 +1,11 @@
 var app = app || {};
 
 app.ProjectView = Backbone.View.extend({
+
   initialize: function() {
-    //this.listenTo(this.model, 'sync', this.reRender);
+    this.model.on('add', this.render, this);
     this.model.get('task_lists').on('change', this.reRender, this);
+    this.model.get('task_lists').on('add', this.reRender, this);
 
   },
 
@@ -17,7 +19,28 @@ app.ProjectView = Backbone.View.extend({
     'submit form.add-task-list': 'addTaskList'
   },
 
-  addTaskList: function() {
+  addTaskList: function(event) {
+    // event.preventDefault();
+    // var project = this.model;
+    //
+    // var $form = $(event.target);
+    // debugger;
+    // var attrs = $form.serializeJSON();
+    // $form[0].reset();
+    //
+    // attrs.task_list.project_id = this.model.get('id');
+    // var taskList = new app.TaskList();
+    // var taskLists = project.get('task_lists');
+    //
+    // if(attrs.task_list.title){
+    //   taskList.save(attrs.taskList,{
+    //     success:function(data){
+    //       taskLists.add(taskList);
+    //     }
+    //   });
+    // }
+
+
     event.preventDefault();
     listOwnerId = app.current_user;
     projectId = this.model.get('id');
@@ -34,7 +57,7 @@ app.ProjectView = Backbone.View.extend({
         project_id: projectId,
         tasks: []
       });
-      console.log(taskList.toJSON());
+      //console.log(taskList.toJSON());
       taskList.save();
       taskLists.add(taskList);
     }
@@ -51,7 +74,6 @@ app.ProjectView = Backbone.View.extend({
 
     var project = this.model;
     var tasklists = project.get('task_lists');
-
 
 
     tasklists.comparator = function(tasklist) {
@@ -79,18 +101,18 @@ app.ProjectView = Backbone.View.extend({
       connectWith: '.list',
       delay: 200,
       tolerance: 'pointer',
-      axis: 'x',
-      opacity: 0.5,
-       scroll: true,
-
 
       start: function(event, ui) {
-        ui.placeholder.width(ui.item.width());
-        ui.placeholder.height(ui.item.height());
+        console.log("START");
+      },
+
+      receive:function(event,ui){
+        console.log("RECEIVED");
       },
 
       update: function(event, ui) {
         var listsSortData = $(this).sortable('serialize');
+        console.log("UPDATE");
         projectId_str = $(event.target).parent().attr('id').replace(/[^\d.]/g, '');
         projectId = parseInt(projectId_str);
 
@@ -104,5 +126,6 @@ app.ProjectView = Backbone.View.extend({
         }
       }
     });
+
   }
 });
