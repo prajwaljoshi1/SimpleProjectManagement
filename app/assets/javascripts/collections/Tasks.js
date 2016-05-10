@@ -5,17 +5,17 @@ app.Tasks = Backbone.Collection.extend({
 
   },
   url: '/tasks',
-  model: app.Task,
+  model: app.Task
 
-  initialize: function () {
-  this.on("add", function (task) {
-    console.log(task.toJSON());
-    var taskView = new app.TaskView({
-      model: task
-    });
-    taskView.render();
-  });
-}
+//   initialize: function () {
+//   this.on("add", function (task) {
+//     console.log(task.toJSON());
+//     var taskView = new app.TaskView({
+//       model: task
+//     });
+//     taskView.render();
+//   });
+// }
 
 });
 

@@ -10,7 +10,6 @@ class TaskListsController < ApplicationController
   end
 
   def create
-       binding.pry
       list = TaskList.new(task_list_params)
       if list.save
         render json: list, status: :ok

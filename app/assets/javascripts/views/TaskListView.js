@@ -42,7 +42,7 @@ app.TaskListView = Backbone.View.extend({
         });
       task.save().done(function () {
          tasks.add(task);
-       }); 
+       });
     }
   },
 
@@ -80,13 +80,20 @@ app.TaskListView = Backbone.View.extend({
         return taskcollection.get('position');
       }
       taskcollection.sort();
-      taskcollection.each(function (task) {
-        //debugger;
-        var taskView = new app.TaskView({
-          model: task
-          });
-        self.$('.task').append(taskView.render().children('div'));
+      // taskcollection.each(function (task) {
+      //   //debugger;
+      //   var taskView = new app.TaskView({
+      //     model: task
+      //     });
+      //   self.$('.task').append(taskView.render().children('div'));
+      // });
+      console.log(taskcollection.toJSON());
+      var taskView = new app.TaskView({
+        collection:taskcollection
       });
+      self.$('.task').html(taskView.render().children('div'));
+      //self.$('.task').html(taskView.render());)
+
 
 
 

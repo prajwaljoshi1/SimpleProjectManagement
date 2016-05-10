@@ -12,13 +12,12 @@ app.TaskView = Backbone.View.extend({
 
 
   reRender:function(){
-    console.log("TASK VIEW RENDER");
     this.render();
   },
 
     render:function(){
 
-        var task = this.model;
+        var tasks = this.collection;
         //var title = task.get('title');
         //var alias = task.get('alias');
 
@@ -31,7 +30,7 @@ app.TaskView = Backbone.View.extend({
 
 
         var individualTaskTemplate = _.template($('#individual-task').html());
-        var html = individualTaskTemplate({task:this.model});
+        var html = individualTaskTemplate({tasks:this.collection});
         this.$el.html(html);
 
 
@@ -48,6 +47,10 @@ app.TaskView = Backbone.View.extend({
             var taskId_str = $(event.target).attr('id').replace(/[^\d.]/g, '');
             var taskId = parseInt(taskId_str);
 
+
+            var task = tasks.get(taskId);
+
+
             task.set({"task_owner_id": userId,
                       "alias": userAlias
                     });
@@ -57,7 +60,6 @@ app.TaskView = Backbone.View.extend({
             //});
           }
         });
-        //this.$el.appendTo('.task');
         return this.$el;
     }
 });

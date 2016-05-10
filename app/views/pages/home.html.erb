@@ -85,10 +85,12 @@
 
 
 <script id="individual-task" type="text/template">
+  {{ tasks.each( function (task){ }}
   <div class="well dropzone" id="task-{{=task.id}}">
     <div class="list-name">{{=task.escape('title')}}</div>
     <div align="right" id="dropzone"> <span class="task-alias">{{=task.escape('alias')}}</span> </div>
   </div>
+  {{ }); }}
 
 </script>
 

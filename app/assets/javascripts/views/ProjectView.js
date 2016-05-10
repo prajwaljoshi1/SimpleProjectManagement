@@ -77,7 +77,7 @@ app.ProjectView = Backbone.View.extend({
         model: tasklist
           //tasks: tasklist.get('tasks')
       });
-      self.$('.lists').append(taskListView.render());
+      self.$('.lists').html(taskListView.render());
     });
 
 
