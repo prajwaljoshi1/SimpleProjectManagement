@@ -80,6 +80,30 @@ input:focus {
   padding: 3px;
 }
 
+ul{
+  list-style: none;
+}
+
+ul.users li{
+  display:inline;
+}
+
+.user-alias-span{
+  background-color: #757575;
+  padding: 0.6em;
+  margin: 0.6em;
+}
+
+.add-member-form{
+  text-align: center;
+}
+
+
+
+
+
+
+
 // .my-tasklists{
 //   display:block;
 // }

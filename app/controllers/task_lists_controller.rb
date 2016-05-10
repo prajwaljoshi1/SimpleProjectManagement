@@ -10,7 +10,7 @@ class TaskListsController < ApplicationController
   end
 
   def create
-      # binding.pry
+       binding.pry
       list = TaskList.new(task_list_params)
       if list.save
         render json: list, status: :ok
@@ -39,7 +39,7 @@ class TaskListsController < ApplicationController
   def task_list_params
 
     params.require(:task_list)
-          .permit(:title, :project_id,:tasks , :postion)
+          .permit(:title, :project_id,:tasks , :position)
 
   end
 

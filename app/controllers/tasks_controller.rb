@@ -9,6 +9,16 @@ class TasksController < ApplicationController
   def new
   end
 
+
+  def update
+    task = Task.find(params[:id])
+      if task.update_attributes(task_params)
+        render json: task, status: :ok
+      else
+        render nothing: true, status: :unprocessable_entity
+      end
+  end
+
   def sort
     task_list = TaskList.find(params[:list_id]);
     task_id_arr =  params[:task].map(&:to_i)

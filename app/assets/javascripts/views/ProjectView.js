@@ -4,8 +4,8 @@ app.ProjectView = Backbone.View.extend({
 
   initialize: function() {
     this.model.on('add', this.render, this);
-    this.model.get('task_lists').on('change', this.reRender, this);
-    this.model.get('task_lists').on('add', this.reRender, this);
+    //this.model.get('task_lists').on('change', this.reRender, this);
+    //this.model.get('task_lists').on('add', this.reRender, this);
 
   },
 
@@ -38,7 +38,6 @@ app.ProjectView = Backbone.View.extend({
       //console.log(taskList.toJSON());
       taskList.save().done(function(){
         taskLists.add(taskList);
-        debugger;
       });
 
     }
@@ -55,6 +54,7 @@ app.ProjectView = Backbone.View.extend({
 
     var project = this.model;
     var tasklists = project.get('task_lists');
+    var users = project.get('users');
 
 
     tasklists.comparator = function(tasklist) {
@@ -68,6 +68,10 @@ app.ProjectView = Backbone.View.extend({
       project: this.model
     });
     this.$el.html(html);
+
+    var userView = new app.UserView({collection: users});
+    this.$('.user-list').append(userView.render());
+
     tasklists.each(function(tasklist) {
       var taskListView = new app.TaskListView({
         model: tasklist
@@ -75,6 +79,8 @@ app.ProjectView = Backbone.View.extend({
       });
       self.$('.lists').append(taskListView.render());
     });
+
+
 
     var lists = this.$('.list');
     lists.sortable({
@@ -105,6 +111,18 @@ app.ProjectView = Backbone.View.extend({
             lists.reset(sortedTaskLists.lists);
           });
         }
+      }
+    });
+
+    var $users = this.$('ul.users li');
+    $users.draggable({
+      helper: 'clone',
+
+      start: function (event, ui) {
+         console.log(ui);
+        //var userId_str = $(event.target).attr('id').replace(/[^\d.]/g, '');
+        //var userId = parseInt(userId_str);
+        //console.log('picked up user ' , user_id);
       }
     });
 

@@ -9,6 +9,7 @@ app.Tasks = Backbone.Collection.extend({
 
   initialize: function () {
   this.on("add", function (task) {
+    console.log(task.toJSON());
     var taskView = new app.TaskView({
       model: task
     });

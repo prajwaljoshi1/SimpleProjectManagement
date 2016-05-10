@@ -5,13 +5,14 @@ app.TaskListView = Backbone.View.extend({
   className:'task-list well',
 
   initialize:function(){
-      this.model.on('add', this.render, this);
+    this.model.on('add', this.render, this);
      this.model.get('tasks').on('add',this.reRender,this);
      this.model.get('tasks').on('change',this.reRender,this);
      //this.model('add', this.reRender, this);
   },
 
   reRender:function(){
+    console.log("HERE ");
        this.render();
   },
 
@@ -41,7 +42,7 @@ app.TaskListView = Backbone.View.extend({
         });
       task.save().done(function () {
          tasks.add(task);
-       }); // Saves it to the server - POST
+       }); 
     }
   },
 
@@ -74,7 +75,8 @@ app.TaskListView = Backbone.View.extend({
 
     this.$el.html(html);
     this.$el.appendTo('.list');
-    taskcollection.comparator = function(tasks){
+
+    taskcollection.comparator = function(taskcollection){
         return taskcollection.get('position');
       }
       taskcollection.sort();

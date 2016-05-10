@@ -43,8 +43,9 @@
 
 <script id="project-page" type="text/template">
     <h2>{{= project.escape('title')}}</h2>
-
+    <div class="well user-list"></div>
     <div class="list-of-tasklist" id = "project{{=project.id}}">
+
         <span class="my-tasklists list"></span>
 
 
@@ -84,9 +85,31 @@
 
 
 <script id="individual-task" type="text/template">
-  <div class="well" id="task-{{=task.id}}">
+  <div class="well dropzone" id="task-{{=task.id}}">
     <div class="list-name">{{=task.escape('title')}}</div>
-    <div align="right"> <span class="task-alias">{{=task.escape('alias')}}</span> </div>
+    <div align="right" id="dropzone"> <span class="task-alias">{{=task.escape('alias')}}</span> </div>
   </div>
 
+</script>
+
+<script id="member-list" type="text/template">
+  <div>
+    <ul class="users">
+      {{ users.each(function(user) {  }}
+        <li class="user " id="user-{{=user.id}}" alias={{=user.get('alias')}}>
+          <span class="user-alias" >
+            <span class="user-alias-span" >{{= user.get('alias')}}</span>
+          </span>
+        </li>
+      {{ }); }}
+    </ul>
+  </div>
+  <div class="add-member-form">
+    <form class="add_user">
+    <input type="text"
+         name="user_id"
+         placeholder="Add A Member" />
+  <input type="submit" value="Add Member" />
+</form>
+</div>
 </script>

@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   post '/tasklists' => 'task_lists#create'
   post '/tasklists/sort' => 'task_lists#sort'
 
+
   get '/tasks' => 'tasks#index'
   post '/task' => 'tasks#create'
   post '/tasks/sort' => 'tasks#sort'
+  put 'task/:id' => 'tasks#update'
 
 
 

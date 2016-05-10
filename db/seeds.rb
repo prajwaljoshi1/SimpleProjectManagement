@@ -18,10 +18,10 @@
 
 User.destroy_all()
 
-user1 = User.create(name: 'Praj Joshi',  email: "prazwal@rocketmail.com",    password: "test", password_confirmation: "test")
-user2 = User.create(name: 'John Wayne',  email: "john@rocketmail.com",    password: "test", password_confirmation: "test")
-user3 = User.create(name: 'Bill Murphy',  email: "bill@rocketmail.com",    password: "test", password_confirmation: "test")
-user4 = User.create(name: 'Tom Hardy',  email: "bill@rocketmail.com",    password: "test", password_confirmation: "test")
+user1 = User.create(name: 'Praj Joshi',  email: "prazwal@rocketmail.com",    password: "test", password_confirmation: "test", alias: "PJ")
+user2 = User.create(name: 'John Wayne',  email: "john@rocketmail.com",    password: "test", password_confirmation: "test", alias: "JW")
+user3 = User.create(name: 'Bill Murphy',  email: "bill@rocketmail.com",    password: "test", password_confirmation: "test", alias: "BM")
+user4 = User.create(name: 'Tom Hardy',  email: "bill@rocketmail.com",    password: "test", password_confirmation: "test", alias: "TH")
 
 
 # create_table "projects", force: :cascade do |t|

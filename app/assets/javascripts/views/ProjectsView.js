@@ -3,7 +3,7 @@ var app = app || {}
 app.ProjectsView = Backbone.View.extend({
 
   initialize:function(){
-
+     this.collection.on('all', this.render, this);
   },
 
   el: "#main",

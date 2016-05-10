@@ -25,6 +25,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.alias = @user.name.split.map(&:first).join.upcase
+    binding.pry
     if @user.save
       session[:user_id] = @user.id
         flash[:success] = "Welcome  #{@user.name}."
