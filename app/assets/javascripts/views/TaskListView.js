@@ -49,17 +49,6 @@ app.TaskListView = Backbone.View.extend({
 
   render:function(){
 
-
-    // render: function(){
-    //     var html = this.template(this.model.toJSON()));
-    //     var newElement = $(html)
-    //     this.$el.replaceWith(newElement);
-    //     this.setElement(newElement);
-    //     return this;
-    // }
-
-
-
     var self = this;
 
     var taskList = this.model;
@@ -79,14 +68,6 @@ app.TaskListView = Backbone.View.extend({
     taskcollection.comparator = function(taskcollection){
         return taskcollection.get('position');
       }
-      taskcollection.sort();
-      // taskcollection.each(function (task) {
-      //   //debugger;
-      //   var taskView = new app.TaskView({
-      //     model: task
-      //     });
-      //   self.$('.task').append(taskView.render().children('div'));
-      // });
       console.log(taskcollection.toJSON());
       var taskView = new app.TaskView({
         collection:taskcollection
@@ -104,14 +85,6 @@ app.TaskListView = Backbone.View.extend({
       delay: 200,
       tolerance: 'pointer',
 
-      start: function (event, ui) {
-        // listId_str = $(event.target).parent().attr('id').replace ( /[^\d.]/g, '' );
-        // listId = parseInt(listId_str);
-        // console.log("DRAG FROM: ",listId);
-        // console.log(ui.item.index());
-        // ui.placeholder.width(ui.item.width());
-        // ui.placeholder.height(ui.item.height());
-      },
 
       update: function (event, ui) {
          var taskSortData = $(this).sortable('serialize');
@@ -128,18 +101,6 @@ app.TaskListView = Backbone.View.extend({
         }
       },
 
-      receive: function(event, ui){
-
-      //   listId_str = $(event.target).parent().attr('id').replace ( /[^\d.]/g, '' );
-      //   listId = parseInt(listId_str);
-      //   console.log("DROP TO: ",listId);
-      //   console.log(ui.item.index());
-      //   var itemChildId = ui.item.children().first().attr('id');
-      // //  console.log(itemChildId);
-      //
-      //  //tasks where
-
-      }
     });
 
     //this.$el.unwrap();

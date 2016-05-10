@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   def update
     task = Task.find(params[:id])
       if task.update_attributes(task_params)
-        render json: task, status: :ok
+        render json: task, status: :ok, root: false
       else
         render nothing: true, status: :unprocessable_entity
       end
