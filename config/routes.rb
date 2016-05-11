@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   get '/taskcomments' => 'task_comments#index'
 
+  post '/taskcomments' => 'task_comments#create'
 
 
   get '/login' => 'session#new'

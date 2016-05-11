@@ -133,16 +133,14 @@
 <p align="center" class="modal-task-owner"> This task belongs to: {{= task.escape('alias') }} </p>
 
 <div class="well">
-  <form id="add-comment form-group">
-    <textarea name="comment" class="form-control modal-comment-form"></textarea>
+  <form id="add-comment" class="form-group">
+    <textarea id="comment" class="form-control modal-comment-form"></textarea>
     <button type="submit">Post</button>
   </form>
 </div>
-
 <ul class="modal-comment-list">
-  {{ if(comments.length > 0)}}
   {{ comments.each(function(comment){ }}
-        <li><span class="alias">{{=comment.user_alias}}</span>{{=comment.message}}</li>
+        <li><span class="alias">{{=comment.escape('user_alias')}} </span>{{=comment.escape('message')}}</li>
  {{ }); }}
 </ul>
 

@@ -4,25 +4,48 @@ app.TaskModalView = Backbone.View.extend({
 
    initialize:function(){
 
-     //this.model.get('task_comments').on('add', this.render, this);
+     this.model.get('task_comments').on('add', this.render, this);
    },
 
    events: {
-   'submit form#add_comment': 'addComment',
+   'submit form#add-comment': 'addComment'
   },
 
     addComment:function(event){
        event.preventDefault();
-
+       console.log("add comment");
+       debugger;
        var task = this.model;
-       var tasks = this.collection;
-       var comments = card.get('text_comments');
+       var taskId = task.get('id');
+
+       var commentor = app.current_user;
+       var commentText = this.$el.find("#comment").val();
+
+       var comments = task.get('task_comments');
+
+       var comment = new app.TaskComment();
+       console.log(commentText);
+       if(commentText !==""){
+         comment.set({
+            message:commentText,
+            task_id:taskId,
+            user_alias: app.user_alias
+         });
+       }
+
+       comment.save().done(function(){
+         debugger;
+          comments.add(comment);
+          debugger;
+       });
     },
 
 
   render:function(){
     task = this.model;
     var comments = task.get('task_comments');
+    console.log(comments);
+    debugger;
 
 
     var taskModalTemplate = _.template($('#task-modal').html());
