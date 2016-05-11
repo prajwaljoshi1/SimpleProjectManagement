@@ -14,4 +14,5 @@
 
 class Task < ActiveRecord::Base
   belongs_to  :task_list
+  has_many :task_comments
 end

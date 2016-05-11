@@ -35,12 +35,12 @@ app.TaskListView = Backbone.View.extend({
 
     var tasklist = this.model;
     var tasks = tasklist.get('tasks');
-    //console.log(tasks.toJSON());
     var task = tasks.get(taskId);
-    console.log(task.toJSON());
-    var taskTitle = task.get('title');
 
-    task.fetch().done(function(task){
+    var taskTitle = task.get('title');
+    console.log(task);
+    task.fetch().done(function(){
+    console.log(task);
       var taskModalView = new app.TaskModalView({
         model: task
       });

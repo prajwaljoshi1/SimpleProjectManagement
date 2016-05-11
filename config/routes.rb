@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   put '/task/:id' => 'tasks#update'
   delete '/task/:id' => 'tasks#destroy'
 
+  get '/taskcomments' => 'task_comments#index'
+
 
 
   get '/login' => 'session#new'

@@ -9,8 +9,6 @@
 
 <div id="main"></div>
 
-
-
 <!-- MY Projects Page Template-->
 <script id="my-projects-page" type="text/template">
 
@@ -101,6 +99,8 @@
 
 </script>
 
+
+
 <script id="member-list" type="text/template">
   <div>
     <ul class="users">
@@ -126,21 +126,24 @@
 
 
 <script id="task-modal" type="text/template">
-    <div class="task-title">Task Description: {{= task.task.description }}</div>
+ <div align="center" class="modal-sub-title">This card belongs to LIST NAME HERE</div>
 
-      <div id="task-message-form">Textarea view goes here</div>
+ <div align="center" class="modal-task-description"> <span>Task Description: </span> {{=task.escape('description') }} </div>
 
-        <ul id="messages">
+<p align="center" class="modal-task-owner"> This task belongs to: {{= task.escape('alias') }} </p>
 
-          <li align="center"><strong>Messages:</strong></li>
-        </ul>
-</script>
+<div class="well">
+  <form id="add-comment form-group">
+    <textarea name="comment" class="form-control modal-comment-form"></textarea>
+    <button type="submit">Post</button>
+  </form>
+</div>
 
+<ul class="modal-comment-list">
+  {{ if(comments.length > 0)}}
+  {{ comments.each(function(comment){ }}
+        <li><span class="alias">{{=comment.user_alias}}</span>{{=comment.message}}</li>
+ {{ }); }}
+</ul>
 
-
-
-
-<script id="task-message-template" type="text/template">
-  <textarea id="task-message" placeholder=""></textarea>
-  <button>Post</button>
 </script>
