@@ -38,6 +38,7 @@ app.TaskListView = Backbone.View.extend({
     //console.log(tasks.toJSON());
     var task = tasks.get(taskId)
     console.log(task.toJSON());
+    console.log(task);
 
     task.fetch().done(function(task){
       var taskModalView = new app.TaskModalView({
@@ -45,7 +46,6 @@ app.TaskListView = Backbone.View.extend({
       });
       taskModalView.render();
     });
-
 
 
   },
@@ -108,9 +108,7 @@ app.TaskListView = Backbone.View.extend({
     this.$el.attr('id', id);
     var individialListTemplate = _.template($('#individual-list').html());
     var html = individialListTemplate({taskList: this.model});
-
     this.$el.html(html);
-    console.log(this.$el);
     this.$el.appendTo('.list');
 
     taskcollection.comparator = function(taskcollection){
@@ -132,6 +130,7 @@ app.TaskListView = Backbone.View.extend({
       connectWith: '.task',
       delay: 200,
       tolerance: 'pointer',
+      placeholder:'task-placeholder',
 
 
       update: function (event, ui) {

@@ -69,6 +69,9 @@
 
     <div class="task"></div>
 
+
+
+
     <div class="add-task well">
       <form class="add-task form-control " id="list{{=taskList.id}}">
         <input type="text"
@@ -78,7 +81,9 @@
            placeholder="Add a task ..." />
         <input type="submit" value=" + " data-tasklist-id="{{=taskList.id}}" class="add-task-button" class="btn btn-primary btn-xs"/>
     </form>
-  </div>
+    </div>
+
+
 
 </script>
 
@@ -117,4 +122,9 @@
   <input type="submit" value="Add Member" />
 </form>
 </div>
+</script>
+
+
+<script id="task-modal" type="text/template">
+    <div class="task-title">{{= console.log(task.task.title) }}</div>
 </script>
