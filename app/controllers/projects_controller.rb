@@ -21,6 +21,13 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def member
+      project = Project.find(params[:project_id])
+      user = User.find_by(email: params[:member_email])
+      project.users << user if user
+      #code to render
+  end
+
 
  private
  def project_params

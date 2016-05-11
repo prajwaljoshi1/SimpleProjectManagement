@@ -8,17 +8,44 @@ app.TaskListView = Backbone.View.extend({
     this.model.on('add', this.render, this);
      this.model.get('tasks').on('add',this.reRender,this);
      this.model.get('tasks').on('change',this.reRender,this);
+     this.model.get('tasks').on('remove',this.reRender,this);
      //this.model('add', this.reRender, this);
   },
 
   reRender:function(){
-    console.log("HERE ");
+    console.log(this);
        this.render();
   },
 
   events:{
-      'submit form.add-task':'addTask'
+      'submit form.add-task':'addTask',
+      'click  .delete': 'deleteTask',
+      'click  .task': 'openTask'
   },
+
+  openTask:function(event){
+    event.stopPropagation();
+    taskId_str =$(event.currentTarget).children().children().attr('id').replace ( /[^\d.]/g, '' );
+    taskId = parseInt(taskId_str);
+    console.log(taskId);
+    var $taskModal = $('div.task-modal');
+
+    var tasklist = this.model;
+    var tasks = tasklist.get('tasks');
+    //console.log(tasks.toJSON());
+    var task = tasks.get(taskId)
+    console.log(task.toJSON());
+
+    task.fetch().done(function(task){
+      var taskModalView = new app.TaskModalView({
+        model: task
+      });
+    });
+
+
+
+  },
+
 
   addTask:function(event){
       event.preventDefault();
@@ -46,6 +73,22 @@ app.TaskListView = Backbone.View.extend({
     }
   },
 
+  deleteTask:function(event){
+    event.stopPropagation();
+    taskId_str = $(event.target).attr('id').replace ( /[^\d.]/g, '' );
+    taskId = parseInt(taskId_str);
+    tasklist = this.model;
+    var tasks = tasklist.get('tasks');
+    var task = tasks.get(taskId);
+
+    task.destroy({
+      success:function(data){
+        tasks.remove(task)
+      }
+    });
+
+  },
+
 
   render:function(){
 
@@ -63,17 +106,18 @@ app.TaskListView = Backbone.View.extend({
     var html = individialListTemplate({taskList: this.model});
 
     this.$el.html(html);
+    console.log(this.$el);
     this.$el.appendTo('.list');
 
     taskcollection.comparator = function(taskcollection){
         return taskcollection.get('position');
       }
-      console.log(taskcollection.toJSON());
+      //console.log(taskcollection.toJSON());
       var taskView = new app.TaskView({
         collection:taskcollection
       });
-      self.$('.task').html(taskView.render().children('div'));
-      //self.$('.task').html(taskView.render());)
+      //self.$('.task').html(taskView.render().children('div'));
+      self.$('.task').html(taskView.render());
 
 
 

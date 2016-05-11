@@ -87,6 +87,8 @@
 <script id="individual-task" type="text/template">
   {{ tasks.each( function (task){ }}
   <div class="well dropzone" id="task-{{=task.id}}">
+    <button class="delete"
+              id="{{= task.id}}">X</button>
     <div class="list-name">{{=task.escape('title')}}</div>
     <div align="right" id="dropzone"> <span class="task-alias">{{=task.escape('alias')}}</span> </div>
   </div>
@@ -107,10 +109,11 @@
     </ul>
   </div>
   <div class="add-member-form">
-    <form class="add_user">
+    <form class="add-user">
     <input type="text"
+          id="member-email"
          name="user_id"
-         placeholder="Add A Member" />
+         placeholder="Enter Email Address" />
   <input type="submit" value="Add Member" />
 </form>
 </div>

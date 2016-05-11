@@ -3,9 +3,9 @@ var app = app || {};
 app.ProjectView = Backbone.View.extend({
 
   initialize: function() {
-    this.model.on('add', this.render, this);
-    //this.model.get('task_lists').on('change', this.reRender, this);
-    //this.model.get('task_lists').on('add', this.reRender, this);
+    this.model.on('add', this.reRender, this);
+    this.model.get('task_lists').on('change', this.reRender, this);
+    this.model.get('task_lists').on('add', this.reRender, this);
 
   },
 
