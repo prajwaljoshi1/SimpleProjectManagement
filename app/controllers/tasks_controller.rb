@@ -2,7 +2,9 @@ class TasksController < ApplicationController
 
   def index
     # @projects = current_user.projects
-      render json: @lists, status: :ok
+    binding.pry
+      tasks = Task.all
+      render json: tasks, status: :ok
   end
 
   def new
@@ -13,6 +15,17 @@ class TasksController < ApplicationController
     if task.destroy
       render json: task, status: :ok
    else
+     render nothing: true, status: :unprocessable_entity
+   end
+end
+
+def show
+
+   task = Task.find(params[:id])
+   if task
+     render json: task, status: :ok
+   else
+     binding.pry
      render nothing: true, status: :unprocessable_entity
    end
 end

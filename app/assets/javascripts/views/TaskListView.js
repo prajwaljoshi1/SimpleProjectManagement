@@ -13,8 +13,11 @@ app.TaskListView = Backbone.View.extend({
   },
 
   reRender:function(){
-    console.log(this);
-       this.render();
+     //this.render();
+
+       var project = app.projects.get(app.projectId);
+       var projectView = new app.ProjectView({ model: project });
+       projectView.render();
   },
 
   events:{
@@ -40,6 +43,7 @@ app.TaskListView = Backbone.View.extend({
       var taskModalView = new app.TaskModalView({
         model: task
       });
+      taskModalView.render();
     });
 
 
@@ -91,7 +95,7 @@ app.TaskListView = Backbone.View.extend({
 
 
   render:function(){
-
+    //debugger;
     var self = this;
 
     var taskList = this.model;

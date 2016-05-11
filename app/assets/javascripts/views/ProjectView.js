@@ -47,6 +47,7 @@ app.ProjectView = Backbone.View.extend({
   el: "#main",
 
   render: function() {
+    //debugger;
     self = this;
 
     this.$el.empty();
