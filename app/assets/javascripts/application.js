@@ -18,7 +18,7 @@
 //= require underscore
 //= require backbone
 //= require backbone-relational
-//= require backbone.bootstrapModal.js
+//= require backbone.bootstrap-modal.js
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views

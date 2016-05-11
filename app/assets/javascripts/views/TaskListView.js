@@ -36,15 +36,20 @@ app.TaskListView = Backbone.View.extend({
     var tasklist = this.model;
     var tasks = tasklist.get('tasks');
     //console.log(tasks.toJSON());
-    var task = tasks.get(taskId)
+    var task = tasks.get(taskId);
     console.log(task.toJSON());
-    console.log(task);
+    var taskTitle = task.get('title');
 
     task.fetch().done(function(task){
       var taskModalView = new app.TaskModalView({
         model: task
       });
-      taskModalView.render();
+      var modal = new Backbone.BootstrapModal({
+        content: taskModalView,
+        title: taskTitle,
+        animate: true
+      }).open(function(){ console.log('clicked OK') });
+
     });
 
 

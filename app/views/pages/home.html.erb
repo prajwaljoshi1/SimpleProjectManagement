@@ -126,5 +126,21 @@
 
 
 <script id="task-modal" type="text/template">
-    <div class="task-title">{{= console.log(task.task.title) }}</div>
+    <div class="task-title">Task Description: {{= task.task.description }}</div>
+
+      <div id="task-message-form">Textarea view goes here</div>
+
+        <ul id="messages">
+
+          <li align="center"><strong>Messages:</strong></li>
+        </ul>
+</script>
+
+
+
+
+
+<script id="task-message-template" type="text/template">
+  <textarea id="task-message" placeholder=""></textarea>
+  <button>Post</button>
 </script>
