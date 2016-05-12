@@ -7,8 +7,9 @@ app.TaskListView = Backbone.View.extend({
   initialize:function(){
       this.model.on('add', this.reRender, this);
       this.model.get('tasks').on('add',this.reRender2,this);
-      //this.model.get('tasks').on('change',this.reRender3,this);
+      this.model.get('tasks').on('reset',this.reRender3,this);
       this.model.get('tasks').on('remove',this.reRender4,this);
+      this.model.get('tasks').on('change',this.reRender3,this);
      //this.model('add', this.reRender, this);
   },
 
@@ -188,7 +189,7 @@ app.TaskListView = Backbone.View.extend({
             //console.log(sortedTasks);
 
             var tasks = taskList.get('tasks');
-            //console.log(tasks.toJSON());
+
             tasks.reset(sortedTasks.tasks);
             //console.log(tasks.toJSON());
             //debugger;

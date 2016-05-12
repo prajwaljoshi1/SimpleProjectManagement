@@ -1,5 +1,4 @@
 
-
 var app = app || {}
 
 app.TaskView = Backbone.View.extend({
