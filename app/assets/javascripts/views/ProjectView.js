@@ -7,6 +7,7 @@ app.ProjectView = Backbone.View.extend({
   initialize: function() {
     this.model.on('add', this.reRender1, this);
     this.model.get('task_lists').on('change', this.reRender2, this);
+    this.model.get('task_lists').on('change', this.reRender2, this);
     this.model.get('task_lists').on('add', this.reRender3, this);
   },
 
@@ -24,8 +25,6 @@ app.ProjectView = Backbone.View.extend({
     console.log("ADD on Task_list");
     this.render();
   },
-
-
 
   events: {
     'submit form.add-task-list': 'addTaskList'
@@ -104,14 +103,6 @@ app.ProjectView = Backbone.View.extend({
       connectWith: '.list',
       delay: 200,
       tolerance: 'pointer',
-
-      start: function(event, ui) {
-        console.log("START");
-      },
-
-      receive:function(event,ui){
-        console.log("RECEIVED");
-      },
 
       update: function(event, ui) {
         var listsSortData = $(this).sortable('serialize');
