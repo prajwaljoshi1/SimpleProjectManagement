@@ -24,9 +24,11 @@ class ProjectsController < ApplicationController
   def member
       project = Project.find(params[:project_id])
       user = User.find_by(email: params[:member_email])
-      project.users << user if user
 
-
+      if user
+        project.users << user
+        render json: user, status: :ok
+      end
   end
 
 
