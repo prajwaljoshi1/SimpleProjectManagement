@@ -27,6 +27,8 @@ $(document).ready(function() {
   //  var trLists = app.lists.fetch();
 
 
+
+
   $.when(trUser, trProjects ).then( function() {
      //console.log("details of current user"); console.log(app.user.toJSON()); console.log("------------------------");
      //console.log("LIST OF PROJECTS BELOW"); console.log(app.projects.toJSON()); console.log("------------------------");

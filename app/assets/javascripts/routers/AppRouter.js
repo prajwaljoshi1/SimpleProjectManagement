@@ -13,8 +13,9 @@ app.AppRouter = Backbone.Router.extend({
 
     theProjectPage: function(id){
        app.projectId = id;
-       var project = app.projects.get(id);
-       var projectView = new app.ProjectView({ model: project });
-       projectView.render();
+
+      var project = app.projects.get(id);
+      var projectView = new app.ProjectView({ model: project });
+      projectView.render();
     }
 });

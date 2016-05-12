@@ -14,7 +14,6 @@ app.TaskModalView = Backbone.View.extend({
     addComment:function(event){
        event.preventDefault();
        console.log("add comment");
-       debugger;
        var task = this.model;
        var taskId = task.get('id');
 
@@ -34,9 +33,7 @@ app.TaskModalView = Backbone.View.extend({
        }
 
        comment.save().done(function(){
-         debugger;
           comments.add(comment);
-          debugger;
        });
     },
 
@@ -44,8 +41,6 @@ app.TaskModalView = Backbone.View.extend({
   render:function(){
     task = this.model;
     var comments = task.get('task_comments');
-    console.log(comments);
-    debugger;
 
 
     var taskModalTemplate = _.template($('#task-modal').html());

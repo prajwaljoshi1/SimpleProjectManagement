@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
                                   //navbar
 .navbar {
@@ -26,12 +27,14 @@
                                   // jumbotron
 .jumbotron{
     height: 100vh;
-    background-color: #1f8dd6;
+    width:auto;
+    background-color: #2e3d50;//#1f8dd6;
     color:#ffffff;
 }
 
 .well{
   border-radius: 5px;
+   background-color: rgba(245, 245, 245, 0.4);
 }
 
                                 //button

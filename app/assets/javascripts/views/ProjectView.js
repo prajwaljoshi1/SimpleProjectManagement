@@ -2,16 +2,29 @@ var app = app || {};
 
 app.ProjectView = Backbone.View.extend({
 
-  initialize: function() {
-    this.model.on('add', this.reRender, this);
-    this.model.get('task_lists').on('change', this.reRender, this);
-    this.model.get('task_lists').on('add', this.reRender, this);
+  el: "#main",
 
+  initialize: function() {
+    this.model.on('add', this.reRender1, this);
+    this.model.get('task_lists').on('change', this.reRender2, this);
+    this.model.get('task_lists').on('add', this.reRender3, this);
   },
 
-  reRender: function() {
+  reRender1: function() {
+    console.log("ADD on project");
     this.render();
   },
+
+  reRender2: function() {
+    console.log("CHANGE on task_lists");
+    this.render();
+  },
+
+  reRender3: function() {
+    console.log("ADD on Task_list");
+    this.render();
+  },
+
 
 
   events: {
@@ -20,6 +33,7 @@ app.ProjectView = Backbone.View.extend({
 
   addTaskList: function() {
     event.preventDefault();
+    console.log("create list");
     listOwnerId = app.current_user;
     projectId = this.model.get('id');
     var project = this.model;
@@ -38,13 +52,14 @@ app.ProjectView = Backbone.View.extend({
       //console.log(taskList.toJSON());
       taskList.save().done(function(){
         taskLists.add(taskList);
+
       });
 
     }
   },
 
 
-  el: "#main",
+
 
   render: function() {
     //debugger;
@@ -110,6 +125,7 @@ app.ProjectView = Backbone.View.extend({
           $.post('tasklists/sort', listsSortData, function(sortedTaskLists) {
             var lists = project.get('task_lists');
             lists.reset(sortedTaskLists.lists);
+
           });
         }
       }

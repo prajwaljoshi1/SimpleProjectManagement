@@ -6,17 +6,20 @@ app.TaskView = Backbone.View.extend({
 
   initialize:function(){
 
-     //this.model.on('update', this.reRender, this);
-     //this.model.on('change', this.reRender, this);
+     //this.collection.on('update', this.reRender, this);
+     //this.collection.on('change', this.reRender, this);
+     //this.collection.on('reset', this.reRender, this);
   },
 
 
   reRender:function(){
-    this.render();
+    this.render;
+    // var project = app.projects.get(app.projectId);
+    // var projectView = new app.ProjectView({ model: project });
+    // projectView.render();
   },
 
     render:function(){
-
         var tasks = this.collection;
         //var title = task.get('title');
         //var alias = task.get('alias');
@@ -47,17 +50,19 @@ app.TaskView = Backbone.View.extend({
             var taskId_str = $(event.target).attr('id').replace(/[^\d.]/g, '');
             var taskId = parseInt(taskId_str);
 
-
+            console.log("________TASK ID: ", taskId);
             var task = tasks.get(taskId);
-
+            console.log(tasks.toJSON());
+            console.log(task);
+            if (task == undefined){
+              alert("PAGE CRASHED! please reload")
+            }
 
             task.set({"task_owner_id": userId,
                       "alias": userAlias
                     });
 
-            task.save()//.done(function(){
-            //  app.tasks.update(task);
-            //});
+            task.save();
           }
         });
         return this.$el;

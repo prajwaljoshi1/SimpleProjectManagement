@@ -5,6 +5,7 @@ app.UserView = Backbone.View.extend({
 
   initialize:function(){
 
+
   },
 
   events:{
@@ -17,17 +18,21 @@ app.UserView = Backbone.View.extend({
     var projectId = app.projectId;
     var memberEmail= this.$el.find('#member-email').val();
 
-    var re = /\S+@\S+\.\S+/;
-    if(re.test(memberEmail)){
+    var reCheckEmail = /\S+@\S+\.\S+/;
+    if(reCheckEmail.test(memberEmail)){
     var memberProject = { "project_id": projectId, "member_email":memberEmail }
     postUrl='project/member';
     $.post(postUrl, memberProject,function(){
-      console.log('saved!!');
+      console.log(' user added to group!!');
+      app.projects.fetch().done(function(){
+        var project = app.projects.get(app.projectId);
+        console.log("RENDER PROJECT _ DROP USER SAVE");
+        var projectView = new app.ProjectView({ model: project });
+        projectView.render();
+      });
+
     });
     }
-
-
-
   },
 
     render:function(){

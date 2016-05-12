@@ -5,30 +5,67 @@ app.TaskListView = Backbone.View.extend({
   className:'task-list well',
 
   initialize:function(){
-    this.model.on('add', this.render, this);
-     this.model.get('tasks').on('add',this.reRender,this);
-     this.model.get('tasks').on('change',this.reRender,this);
-     this.model.get('tasks').on('remove',this.reRender,this);
+      this.model.on('add', this.reRender, this);
+      this.model.get('tasks').on('add',this.reRender2,this);
+      //this.model.get('tasks').on('change',this.reRender3,this);
+      this.model.get('tasks').on('remove',this.reRender4,this);
      //this.model('add', this.reRender, this);
   },
 
-  reRender:function(){
-     //this.render();
-
-       var project = app.projects.get(app.projectId);
+  reRender4:function(){
+    console.log("ON TASKS REMOVE");
+      var self = this;
+       //app.projects.fetch().done(function(){
+         console.log("RENDER PROJECT FROM RE_RENDER TASKLIST");
+        var project = app.projects.get(app.projectId);
        var projectView = new app.ProjectView({ model: project });
-       projectView.render();
+      projectView.render();
+     //});
+  },
+
+  reRender1: function() {
+    console.log("TTT");
+    return this;
+   //});
+  },
+
+  reRender2: function() {
+    console.log("ON TASK ADD");
+    var self = this;
+     //app.projects.fetch().done(function(){
+       console.log("RENDER PROJECT FROM RE_RENDER TASKLIST");
+      var project = app.projects.get(app.projectId);
+     var projectView = new app.ProjectView({ model: project });
+    projectView.render();
+   //});
+  },
+
+  reRender3: function() {
+    console.log("ON TASK CHANGE");
+    var self = this;
+     //app.projects.fetch().done(function(){
+       console.log("RENDER PROJECT FROM RE_RENDER TASKLIST");
+      var project = app.projects.get(app.projectId);
+     var projectView = new app.ProjectView({ model: project });
+    projectView.render();
+   //});
   },
 
   events:{
       'submit form.add-task':'addTask',
       'click  .delete': 'deleteTask',
-      'click  .task': 'openTask'
+      'click  .dropzone': 'openTask',
+      'hover form.add-task':'showAddTask'
+  },
+
+  showAddTask:function(){
+    debugger;
   },
 
   openTask:function(event){
     event.stopPropagation();
-    taskId_str =$(event.currentTarget).children().children().attr('id').replace ( /[^\d.]/g, '' );
+      console.log($(event.currentTarget));
+    taskId_str =$(event.currentTarget).attr('id').replace( /[^\d.]/g, '' );
     taskId = parseInt(taskId_str);
     console.log(taskId);
     var $taskModal = $('div.task-modal');
@@ -84,6 +121,7 @@ app.TaskListView = Backbone.View.extend({
 
   deleteTask:function(event){
     event.stopPropagation();
+    console.log("delete");
     taskId_str = $(event.target).attr('id').replace ( /[^\d.]/g, '' );
     taskId = parseInt(taskId_str);
     tasklist = this.model;
@@ -147,8 +185,19 @@ app.TaskListView = Backbone.View.extend({
           //ajax for now,   try to use backbone while refactoring......................................(!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
           if(taskSortData){
           $.post('tasks/sort', taskSortData, function (sortedTasks) {
+            //console.log(sortedTasks);
+
             var tasks = taskList.get('tasks');
+            //console.log(tasks.toJSON());
             tasks.reset(sortedTasks.tasks);
+            //console.log(tasks.toJSON());
+            //debugger;
+            // app.projects.fetch().done(function(){
+            //   console.log("RERENDER PROJECT");
+            //  var project = app.projects.get(app.projectId);
+            // var projectView = new app.ProjectView({ model: project });
+            // projectView.render();
+          //});
           });
         }
       },

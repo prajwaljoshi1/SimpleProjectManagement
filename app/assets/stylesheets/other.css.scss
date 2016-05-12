@@ -4,8 +4,11 @@
 
 
 body{
-  background-color: #1f8dd6;
+  background-color: #2e3d50;
+  //font-family: 'Open Sans', sans-serif;
 }
+
+
 
 //fluid horizontal slide
 .row-fluid{
@@ -29,8 +32,8 @@ input:focus {
 .project-display{
 
   margin:10px;
-  min-height: 250px;
-  background-color:#dcdcdc;
+  min-height: 150px;
+  background-color:rgba(245, 245, 245, 0.7);
 }
 
 .project-organisation{
@@ -76,10 +79,10 @@ input:focus {
 }
 
 .task-alias{
-  background-color: #757575;
+  background-color: #2e3d50;
   padding: 0.6em;
   margin: 0.6em;
-  color:#ffffff;
+  color:#aeb3ba;
 }
 
 ul{
@@ -91,9 +94,10 @@ ul.users li{
 }
 
 .user-alias-span{
-  background-color: #757575;
+  background-color: #2e3d50;
   padding: 0.6em;
   margin: 0.6em;
+  color:#aeb3ba;
 }
 
 .add-member-form{
@@ -120,12 +124,34 @@ ul.users li{
 .task-placeholder{
   height:110px;
   width:260px;
-  background-color: #1f8dd6;;
+  background-color: #2e3d50;
   border-radius: 5px;
   margin-bottom: 10px;
 
+}
+input, textarea {
+  background-color : rgba(245, 245, 245, 0.7);
+  border:none;
 }
 
 // .my-tasklists{
 //   display:block;
 // }
+
+.project-title, .page-heading{
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 60px;
+}
+
+.add-project-div{
+  text-align: center;
+}
+
+.modal-task-owner{
+  padding:10px;
+}
+
+.task-comment{
+  padding:15px;
+}

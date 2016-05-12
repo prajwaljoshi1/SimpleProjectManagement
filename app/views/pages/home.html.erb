@@ -23,15 +23,13 @@
         <div class="project-title">{{= project.escape('title') }}</div>
         <hr>
         <div class="project-organisation">{{= project.escape('organisation') }}</div>
-        <hr>
-        <div class="project-description">{{= project.escape('description') }}</div>
     </div>
     </a>
   {{ }); }}
 </div>
 </div>
 
-<div>
+<div class="add-project-div">
   <!-- <button class="add-project-btn btn btn-default btn-lg">Add New Project</button> -->
   <%= link_to "Add New Project", project_new_path, class: "add-project-btn btn btn-default btn-lg" %>
 </div>
@@ -40,7 +38,7 @@
 
 
 <script id="project-page" type="text/template">
-    <h2>{{= project.escape('title')}}</h2>
+    <h2 class="project-title">{{= project.escape('title')}}</h2>
     <div class="well user-list"></div>
     <div class="list-of-tasklist" id = "project{{=project.id}}">
 
@@ -130,7 +128,7 @@
 
  <div align="center" class="modal-task-description"> <span>Task Description: </span> {{=task.escape('description') }} </div>
 
-<p align="center" class="modal-task-owner"> This task belongs to: {{= task.escape('alias') }} </p>
+<p align="center" class="modal-task-owner"> This task belongs to:<span class="user-alias-span"> {{= task.escape('alias') }} </span></p>
 
 <div class="well">
   <form id="add-comment" class="form-group">
@@ -140,8 +138,7 @@
 </div>
 <ul class="modal-comment-list">
   {{ comments.each(function(comment){ }}
-        <li><span class="alias">{{=comment.escape('user_alias')}} </span>{{=comment.escape('message')}}</li>
+        <li class="task-comment"><span class="user-alias-span">{{=comment.escape('user_alias')}} </span>{{=comment.escape('message')}}</li>
  {{ }); }}
 </ul>
-
 </script>
