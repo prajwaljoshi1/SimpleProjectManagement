@@ -21,6 +21,9 @@ app.TaskModalView = Backbone.View.extend({
        var commentText = this.$el.find("#comment").val();
 
        var comments = task.get('task_comments');
+       comments.comparator = function(comment){
+           return comment.get('id');
+         };
 
        var comment = new app.TaskComment();
        console.log(commentText);

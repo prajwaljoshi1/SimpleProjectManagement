@@ -1,30 +1,40 @@
 var app = app || {};
 
+
+
 app.ProjectView = Backbone.View.extend({
 
   el: "#main",
 
   initialize: function() {
-    this.model.on('add', this.reRender1, this);
-    this.model.get('task_lists').on('change', this.reRender2, this);
-    this.model.get('task_lists').on('change', this.reRender2, this);
-    this.model.get('task_lists').on('add', this.reRender3, this);
+
+
+    //this.model.on('add', this.reRender1, this);
+    this.model.get('task_lists').on('change', this.reRender, this);
+    this.model.get('task_lists').on('change', this.reRender, this);
+    //this.model.get('task_lists').on('reset', this.reRender2, this);
+    this.model.get('task_lists').on('add', this.reRender, this);
   },
 
-  reRender1: function() {
-    console.log("ADD on project");
+
+
+
+
+  reRender: function() {
+
+    console.log("ADD on project", app.norerender);
     this.render();
   },
 
-  reRender2: function() {
-    console.log("CHANGE on task_lists");
-    this.render();
-  },
-
-  reRender3: function() {
-    console.log("ADD on Task_list");
-    this.render();
-  },
+  // reRender2: function() {
+  //   console.log("CHANGE on task_lists");
+  //   this.render();
+  // },
+  //
+  // reRender3: function() {
+  //   console.log("ADD on Task_list");
+  //   this.render();
+  // },
 
   events: {
     'submit form.add-task-list': 'addTaskList'
@@ -103,6 +113,11 @@ app.ProjectView = Backbone.View.extend({
       connectWith: '.list',
       delay: 200,
       tolerance: 'pointer',
+      //placeholder: 'tasklist-placeholder',
+
+      start:function(event, ui){
+        //ui.placeholder.height(ui.item.height());
+      },
 
       update: function(event, ui) {
         var listsSortData = $(this).sortable('serialize');

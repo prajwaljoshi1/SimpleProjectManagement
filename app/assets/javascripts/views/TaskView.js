@@ -20,17 +20,6 @@ app.TaskView = Backbone.View.extend({
 
     render:function(){
         var tasks = this.collection;
-        //var title = task.get('title');
-        //var alias = task.get('alias');
-
-        //var id = task.get('id');  // bug-trapping
-        //if(!id)
-        //debugger;
-
-
-
-
-
         var individualTaskTemplate = _.template($('#individual-task').html());
         var html = individualTaskTemplate({tasks:this.collection});
         this.$el.html(html);

@@ -1,56 +1,31 @@
 var app = app || {}
 
+
+
 app.TaskListView = Backbone.View.extend({
 
   className:'task-list well',
 
   initialize:function(){
-      this.model.on('add', this.reRender, this);
-      this.model.get('tasks').on('add',this.reRender2,this);
-      this.model.get('tasks').on('reset',this.reRender3,this);
-      this.model.get('tasks').on('remove',this.reRender4,this);
-      this.model.get('tasks').on('change',this.reRender3,this);
+      //this.model.on('add', this.reRender, this);
+      this.model.get('tasks').on('add',this.reRender,this);
+      this.model.get('tasks').on('reset',this.reRender,this);
+      this.model.get('tasks').on('remove',this.reRender,this);
+      this.model.get('tasks').on('change',this.reRender,this);
      //this.model('add', this.reRender, this);
   },
 
-  reRender4:function(){
-    console.log("ON TASKS REMOVE");
-      var self = this;
-       //app.projects.fetch().done(function(){
-         console.log("RENDER PROJECT FROM RE_RENDER TASKLIST");
-        var project = app.projects.get(app.projectId);
-       var projectView = new app.ProjectView({ model: project });
-      projectView.render();
-     //});
-  },
+  reRender:function(){
+    console.log("RERENDER PROJECT");
+    // if(app.norerender >= 2) {
+    //   return;
+    // }
+    //app.norerender += 1;
 
-  reRender1: function() {
-    console.log("TTT");
-    return this;
-   //});
-  },
-
-  reRender2: function() {
-    console.log("ON TASK ADD");
-    var self = this;
-     //app.projects.fetch().done(function(){
-       console.log("RENDER PROJECT FROM RE_RENDER TASKLIST");
-      var project = app.projects.get(app.projectId);
-     var projectView = new app.ProjectView({ model: project });
-    projectView.render();
-   //});
-  },
-
-  reRender3: function() {
-    console.log("ON TASK CHANGE");
-    var self = this;
-     //app.projects.fetch().done(function(){
-       console.log("RENDER PROJECT FROM RE_RENDER TASKLIST");
-      var project = app.projects.get(app.projectId);
-     var projectView = new app.ProjectView({ model: project });
-    projectView.render();
-   //});
-  },
+            var project = app.projects.get(app.projectId);
+            var projectView = new app.ProjectView({ model: project });
+            projectView.render();
+    },
 
   events:{
       'submit form.add-task':'addTask',
@@ -65,6 +40,7 @@ app.TaskListView = Backbone.View.extend({
 
   openTask:function(event){
     event.stopPropagation();
+
       console.log($(event.currentTarget));
     taskId_str =$(event.currentTarget).attr('id').replace( /[^\d.]/g, '' );
     taskId = parseInt(taskId_str);
@@ -95,7 +71,9 @@ app.TaskListView = Backbone.View.extend({
 
 
   addTask:function(event){
+
       event.preventDefault();
+        //app.norerender = 0;
       taskOwnerId = app.current_user;
       tasklist_id = this.model.get('id');
       var tasklist = this.model;
