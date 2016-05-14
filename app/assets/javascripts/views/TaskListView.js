@@ -15,7 +15,7 @@ app.TaskListView = Backbone.View.extend({
      //this.model('add', this.reRender, this);
   },
 
-  reRender:function(){
+  reRender:function(e){
     console.log("RERENDER PROJECT");
     // if(app.norerender >= 2) {
     //   return;
@@ -40,6 +40,7 @@ app.TaskListView = Backbone.View.extend({
 
   openTask:function(event){
     event.stopPropagation();
+    event.stopImmediatePropagation();
 
       console.log($(event.currentTarget));
     taskId_str =$(event.currentTarget).attr('id').replace( /[^\d.]/g, '' );

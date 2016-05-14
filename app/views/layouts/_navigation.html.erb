@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "openPM", root_path, class: "navbar-brand", id: "logo" %>
+      <%= link_to "simple", root_path, class: "navbar-brand", id: "logo" %>
       </%>
     </div>
 
@@ -16,8 +16,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if logged_in?  %>
-        <li><a href="#">All Projects</a></li>
-        <li><a href="#">New Project</a></li>
+        <li><%= link_to "All Project", root_path %></li>
+        <li><%= link_to "New Project", project_new_path %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
