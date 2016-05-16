@@ -102,12 +102,14 @@ app.ProjectView = Backbone.View.extend({
         model: tasklist
           //tasks: tasklist.get('tasks')
       });
-      self.$('.lists').html(taskListView.render());
+      self.$('.my-tasklists').append(taskListView.render());
     });
 
 
 
-    var lists = this.$('.list');
+    var lists = this.$('.lists');
+    //console.log(lists);
+    //ebugger;
     lists.sortable({
       items: 'div.well',
       connectWith: '.list',
@@ -116,6 +118,7 @@ app.ProjectView = Backbone.View.extend({
       //placeholder: 'tasklist-placeholder',
 
       start:function(event, ui){
+        //debugger;
         //ui.placeholder.height(ui.item.height());
       },
 

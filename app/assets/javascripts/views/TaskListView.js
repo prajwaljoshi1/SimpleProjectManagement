@@ -4,7 +4,7 @@ var app = app || {}
 
 app.TaskListView = Backbone.View.extend({
 
-  className:'task-list well',
+  className:'task-list well list',
 
   initialize:function(){
       //this.model.on('add', this.reRender, this);
@@ -16,15 +16,17 @@ app.TaskListView = Backbone.View.extend({
   },
 
   reRender:function(e){
-    console.log("RERENDER PROJECT");
+        console.log("RERENDER PROJECT");
+    this.render();
+
     // if(app.norerender >= 2) {
     //   return;
     // }
     //app.norerender += 1;
 
-            var project = app.projects.get(app.projectId);
-            var projectView = new app.ProjectView({ model: project });
-            projectView.render();
+            //var project = app.projects.get(app.projectId);
+           //var projectView = new app.ProjectView({ model: project });
+           //projectView.render();
     },
 
   events:{
@@ -74,7 +76,6 @@ app.TaskListView = Backbone.View.extend({
   addTask:function(event){
 
       event.preventDefault();
-        //app.norerender = 0;
       taskOwnerId = app.current_user;
       tasklist_id = this.model.get('id');
       var tasklist = this.model;
@@ -118,7 +119,6 @@ app.TaskListView = Backbone.View.extend({
 
 
   render:function(){
-    //debugger;
     var self = this;
 
     var taskList = this.model;
@@ -127,12 +127,23 @@ app.TaskListView = Backbone.View.extend({
 
 
     var taskListId = taskList.get('id');
+
+
+    var taskListPosition =  taskList.get('position');
+    this.$el.attr('position', taskListPosition);
+
+    console.log(taskListPosition);
+
+
+
+
+
     var id = "list-"+taskListId;
     this.$el.attr('id', id);
     var individialListTemplate = _.template($('#individual-list').html());
     var html = individialListTemplate({taskList: this.model});
     this.$el.html(html);
-    this.$el.appendTo('.list');
+    //this.$el.appendTo('.list');
 
     taskcollection.comparator = function(taskcollection){
         return taskcollection.get('position');
@@ -170,14 +181,6 @@ app.TaskListView = Backbone.View.extend({
             var tasks = taskList.get('tasks');
 
             tasks.reset(sortedTasks.tasks);
-            //console.log(tasks.toJSON());
-            //debugger;
-            // app.projects.fetch().done(function(){
-            //   console.log("RERENDER PROJECT");
-            //  var project = app.projects.get(app.projectId);
-            // var projectView = new app.ProjectView({ model: project });
-            // projectView.render();
-          //});
           });
         }
       },
@@ -185,6 +188,7 @@ app.TaskListView = Backbone.View.extend({
     });
 
     //this.$el.unwrap();
+    //this.$el.html('.my-tasklists');
     return this.$el;
   }
 });
