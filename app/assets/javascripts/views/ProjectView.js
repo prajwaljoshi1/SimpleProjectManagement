@@ -115,11 +115,11 @@ app.ProjectView = Backbone.View.extend({
       connectWith: '.list',
       delay: 200,
       tolerance: 'pointer',
-      //placeholder: 'tasklist-placeholder',
+      // placeholder: 'tasklist-placeholder',
 
       start:function(event, ui){
         //debugger;
-        //ui.placeholder.height(ui.item.height());
+        // ui.placeholder.height(ui.item.height());
       },
 
       update: function(event, ui) {

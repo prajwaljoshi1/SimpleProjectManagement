@@ -6,8 +6,12 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.7.2/jquery.serializejson.js"></script>
   <%= csrf_meta_tags %>
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="24532857609-2ga71ovr32jocb7db6etgg232631mrf6.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
+
 <%= render 'layouts/navigation' %>
 
   <div class="jumbotron">

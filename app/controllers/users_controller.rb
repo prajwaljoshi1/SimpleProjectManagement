@@ -24,13 +24,17 @@ class UsersController < ApplicationController
 
 
   def create
+    # binding.pry
     @user = User.new(user_params)
     @user.alias = @user.name.split.map(&:first).join.upcase
-    binding.pry
     if @user.save
+      binding.pry
       session[:user_id] = @user.id
+      binding.pry
         flash[:success] = "Welcome  #{@user.name}."
-        redirect_to user_path(@user)
+        binding.pry
+        redirect_to root_path
+        binding.pry
     else
       flash[:danger] ="something went wrong"
       render'new'

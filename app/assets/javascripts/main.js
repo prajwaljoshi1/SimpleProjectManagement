@@ -10,6 +10,8 @@ var app = app || {};
 
 $(document).ready(function() {
 
+
+
  //console.log("DOCUMENT READY");
  //console.log("LOGGED IN USER ID: ",app.current_user);
 

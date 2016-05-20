@@ -24,7 +24,15 @@
 
         <% if logged_in? %>
          <li><%= link_to current_user.name, root_path %></li>
-          <li> <%= link_to "log out", logout_path, method: :delete %>  </li>
+
+          <li> <%= link_to "log out", logout_path, :onclick => "googleSignOut()", method: :delete %>  </li>
+          <script>
+          // console.log('Logout code');
+          //   function googleSignOut() {
+          //     debugger;
+          //
+          // }
+        </script>
           <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile Settings <%#= "(Admin)" if current_user.admin? %> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -36,6 +44,22 @@
                     </ul>
             </li>
         <% else %>
+
+        <li><div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div></li>
+        <script>
+          function onSignIn(googleUser) {
+          var profile = googleUser.getBasicProfile();
+             var userData = { user: { name: profile.getName(), email: profile.getEmail(), password: profile.getId(), password_confirmation: profile.getId() } }
+            $.post('/users', userData, function () {
+              console.log("User signed up");
+              var auth2 = gapi.auth2.getAuthInstance();
+              auth2.signOut().then(function () {
+                debugger;
+              console.log('User signed out.');
+            });
+            });
+          };
+        </script>
           <li> <%= link_to "log in", login_path %>  </li>
           <li> <%= link_to "Sign up", signup_path %>  </li>
         <%end  %>

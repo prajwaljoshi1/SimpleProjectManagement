@@ -33,7 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # bootstrap
 gem 'bootstrap-sass'
 # bootstrap modified
-#gem 'flat-ui-sass', github: 'wingrunr21/flat-ui-sass'
+#gem google auth
+gem "omniauth-google-oauth2", "~> 0.2.1"
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'

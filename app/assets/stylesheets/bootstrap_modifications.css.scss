@@ -5,7 +5,7 @@
                                   //navbar
 .navbar {
     margin-bottom: 0px;
-    background-color: #2e3d50;
+    background-color: rgba(0,0,0,0.1);//#2e3d50;
     font-size: 1em;
     border: 0px;
     border-radius: 0px;
@@ -28,7 +28,13 @@
 .jumbotron{
     height: 100vh;
     width:auto;
-    background-color: #2e3d50;//#1f8dd6;
+    //background-color: #2e3d50;//#1f8dd6;
+
+
+    background: #6441A5; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #6441A5 , #2a0845); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #6441A5 , #2a0845); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     color:#ffffff;
 }
 
