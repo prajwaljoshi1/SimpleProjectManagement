@@ -4,17 +4,26 @@
      <% if current_user  %>
        app.current_user = <%= current_user.id %>
     <% end %>
+      console.log("USER FROM HOME",app.current_user);
 </script>
 
 
-<div id="main">
+<div id="main" class=" wow fadeIn" data-wow-duration="2s" data-wow-delay="0.3s">
 
 
   <div="app-jumbotron">
-    <h1 class="title">Simple</h1>
-    <h4 class="sub-title">Project Management</h4>
+    <h1 class="title wow fadeIn" data-wow-duration="2s" data-wow-delay="0.3s">Simple</h1>
+    <h4 class="sub-title wow fadeIn" data-wow-duration="3s" data-wow-delay="0.8s">Project Management</h4>
+    <p class="sub-title wow fadeIn" data-wow-duration="3s" data-wow-delay="1.5s" align="center">Its is simple on the surface, but tasks have everything you need to get stuff done. </p>
+    <p class="sub-title wow fadeIn" data-wow-duration="3s" data-wow-delay="2s" align="center"> Post comments for instant feedback and discussion.</p>
+    <p class="sub-title wow fadeIn" data-wow-duration="3s" data-wow-delay="2.5s" align="center" >Drag and drop task between lists to show progress. Swap list position. </p>
+    <p class="sub-title wow fadeIn" data-wow-duration="3s" data-wow-delay="3s" align="center"> Drag people to task to asssign a task to them.</p>
+    <p class="sub-title wow fadeIn" data-wow-duration="3s" data-wow-delay="3.5s" align="center"> Add a new person to the project by simply entering their email</p>
   </div>
+  <script>
+      console.log("wow.js");
 
+  </script>
 
 </div>
 

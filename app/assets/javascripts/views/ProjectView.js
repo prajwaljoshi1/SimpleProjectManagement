@@ -151,6 +151,6 @@ app.ProjectView = Backbone.View.extend({
         //console.log('picked up user ' , user_id);
       }
     });
-
+    return this;
   }
 });

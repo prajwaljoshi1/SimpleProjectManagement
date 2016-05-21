@@ -25,19 +25,23 @@ class UsersController < ApplicationController
 
   def create
     # binding.pry
-    @user = User.new(user_params)
-    @user.alias = @user.name.split.map(&:first).join.upcase
-    if @user.save
-      binding.pry
+    # fix later => lets user login in without correct password through sign up page.
+    @user = User.find_by(email: params[:user][:email])
+    if @user
       session[:user_id] = @user.id
-      binding.pry
-        flash[:success] = "Welcome  #{@user.name}."
-        binding.pry
-        redirect_to root_path
-        binding.pry
+      flash[:success] = "Welcome  #{@user.name}."
+      redirect_to root_path
     else
-      flash[:danger] ="something went wrong"
-      render'new'
+      @user = User.new(user_params)
+      @user.alias = @user.name.split.map(&:first).join.upcase
+      if @user.save
+        session[:user_id] = @user.id
+        flash[:success] = "Welcome  #{@user.name}."
+        redirect_to root_path
+      else
+        flash[:danger] ="something went wrong"
+        render'new'
+      end
     end
   end
 

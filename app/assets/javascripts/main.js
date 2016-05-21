@@ -7,9 +7,12 @@ _.templateSettings = {
 
 
 var app = app || {};
-
+new WOW().init();
+console.log("test");
 $(document).ready(function() {
 
+
+console.log( "USER",app.current_user);
 
 
  //console.log("DOCUMENT READY");

@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if logged_in?  %>
-        <li><%= link_to "All Project", root_path %></li>
+        <li><%= link_to "All Projects", root_path %></li>
         <li><%= link_to "New Project", project_new_path %></li>
         <% end %>
       </ul>
@@ -54,8 +54,8 @@
               console.log("User signed up");
               var auth2 = gapi.auth2.getAuthInstance();
               auth2.signOut().then(function () {
-                debugger;
               console.log('User signed out.');
+              window.location.href = "/";
             });
             });
           };
