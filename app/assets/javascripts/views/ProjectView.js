@@ -7,47 +7,43 @@ app.ProjectView = Backbone.View.extend({
   el: "#main",
 
   initialize: function() {
-
-
-    //this.model.on('add', this.reRender1, this);
-    this.model.get('task_lists').on('change', this.reRender, this);
-    this.model.get('task_lists').on('change', this.reRender, this);
-    //this.model.get('task_lists').on('reset', this.reRender2, this);
-    this.model.get('task_lists').on('add', this.reRender, this);
+    this.model.get('task_lists').on('change', this.reRender1, this);
+    this.model.get('task_lists').on('update', this.reRender2, this);
+    //this.model.get('task_lists').on('remove', this.reRender, this);
+    this.model.get('task_lists').on('add', this.reRender3, this);
   },
 
 
 
-
-
-  reRender: function() {
-
-    console.log("ADD on project", app.norerender);
+  reRender2: function() {
+    console.log("update");
     this.render();
   },
 
-  // reRender2: function() {
-  //   console.log("CHANGE on task_lists");
-  //   this.render();
-  // },
-  //
-  // reRender3: function() {
-  //   console.log("ADD on Task_list");
-  //   this.render();
-  // },
+  reRender1: function() {
+
+    console.log("change");
+    this.render();
+  },
+
+  reRender3: function() {
+
+    console.log("add");
+    this.render();
+  },
+
 
   events: {
-    'submit form.add-task-list': 'addTaskList'
+    'submit form.add-task-list': 'addTaskList',
+    'click  .del-list': 'deleteList'
   },
 
   addTaskList: function() {
     event.preventDefault();
-    console.log("create list");
     listOwnerId = app.current_user;
     projectId = this.model.get('id');
     var project = this.model;
     var listTitle = this.$el.find("#add-list").val();
-    console.log(project);
     var taskLists = project.get('task_lists');
     var taskList = new app.TaskList();
 
@@ -58,7 +54,6 @@ app.ProjectView = Backbone.View.extend({
         tasks: [],
         position: 999,
       });
-      //console.log(taskList.toJSON());
       taskList.save().done(function(){
         taskLists.add(taskList);
 
@@ -67,14 +62,29 @@ app.ProjectView = Backbone.View.extend({
     }
   },
 
+  deleteList:function(event){
+    event.stopPropagation();
+    taskListId_str = $(event.target).attr('id').replace ( /[^\d.]/g, '' );
+    taskListId = parseInt(taskListId_str);
+    tasklist = this.model;
+    var taskLists = this.model.get('task_lists')
+    var taskList = taskLists.get(taskListId);
+
+    taskList.destroy({
+      success:function(data){
+        taskLists.remove(taskList)
+      }
+    });
+
+  },
+
 
 
 
   render: function() {
-    //debugger;
-    self = this;
+    var self = this;
 
-    this.$el.empty();
+     this.$el.empty();
 
 
     var project = this.model;
@@ -100,7 +110,6 @@ app.ProjectView = Backbone.View.extend({
     tasklists.each(function(tasklist) {
       var taskListView = new app.TaskListView({
         model: tasklist
-          //tasks: tasklist.get('tasks')
       });
       self.$('.my-tasklists').append(taskListView.render());
     });
@@ -108,23 +117,18 @@ app.ProjectView = Backbone.View.extend({
 
 
     var lists = this.$('.lists');
-    //console.log(lists);
-    //ebugger;
+
     lists.sortable({
       items: 'div.well',
       connectWith: '.list',
       delay: 200,
       tolerance: 'pointer',
-      // placeholder: 'tasklist-placeholder',
 
       start:function(event, ui){
-        //debugger;
-        // ui.placeholder.height(ui.item.height());
       },
 
       update: function(event, ui) {
         var listsSortData = $(this).sortable('serialize');
-        console.log("UPDATE");
         projectId_str = $(event.target).parent().attr('id').replace(/[^\d.]/g, '');
         projectId = parseInt(projectId_str);
 
@@ -132,8 +136,8 @@ app.ProjectView = Backbone.View.extend({
           listsSortData += '&project_id=' + projectId;
 
           $.post('tasklists/sort', listsSortData, function(sortedTaskLists) {
-            var lists = project.get('task_lists');
-            lists.reset(sortedTaskLists.lists);
+            //var lists = project.get('task_lists');
+            //lists.reset(sortedTaskLists.lists);
 
           });
         }
@@ -145,12 +149,9 @@ app.ProjectView = Backbone.View.extend({
       helper: 'clone',
 
       start: function (event, ui) {
-         console.log(ui);
-        //var userId_str = $(event.target).attr('id').replace(/[^\d.]/g, '');
-        //var userId = parseInt(userId_str);
-        //console.log('picked up user ' , user_id);
       }
     });
-    return this;
+    //return this;
+    //return this.$el;
   }
 });

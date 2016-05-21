@@ -8,7 +8,7 @@
 </script>
 
 
-<div id="main" class=" wow fadeIn" data-wow-duration="2s" data-wow-delay="0.3s">
+<div id="main">
 
 
   <div="app-jumbotron">
@@ -20,10 +20,6 @@
     <p class="sub-title wow fadeIn" data-wow-duration="3s" data-wow-delay="3s" align="center"> Drag people to task to asssign a task to them.</p>
     <p class="sub-title wow fadeIn" data-wow-duration="3s" data-wow-delay="3.5s" align="center"> Add a new person to the project by simply entering their email</p>
   </div>
-  <script>
-      console.log("wow.js");
-
-  </script>
 
 </div>
 
@@ -84,6 +80,8 @@
 
 
 <script id="individual-list" type="text/template">
+  <button class="delete del-list"
+            id="{{= taskList.id}}">X</button>
     <div class="list-name">{{=taskList.escape('title')}}</div>
 
     <div class="task"></div>
@@ -111,7 +109,7 @@
 <script id="individual-task" type="text/template">
   {{ tasks.each( function (task){ }}
   <div class="well dropzone" id="task-{{=task.id}}">
-    <button class="delete"
+    <button class="delete del-task"
               id="{{= task.id}}">X</button>
     <div class="task-name">{{=task.escape('title')}}</div>
     <div align="right" id="dropzone"> <span class="task-alias">{{=task.escape('alias')}}</span> </div>

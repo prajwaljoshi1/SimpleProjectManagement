@@ -33,6 +33,15 @@ class TaskListsController < ApplicationController
 
   end
 
+  def destroy
+    list = TaskList.find(params[:id])
+    if list.destroy
+      render json: list, status: :ok
+   else
+     render nothing: true, status: :unprocessable_entity
+   end
+end
+
   private
 
   def task_list_params

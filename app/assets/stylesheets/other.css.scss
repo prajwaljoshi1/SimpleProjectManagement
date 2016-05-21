@@ -1,3 +1,7 @@
+$themeColor: #4a287a;
+
+
+
 #logo{
   color:#ffffff;
   font-size: 1.4em;
@@ -88,7 +92,7 @@ input:focus {
 }
 
 .task-alias{
-  background-color: #4a287a;
+  background-color: $themeColor;
   padding: 0.6em;
   margin: 0.6em;
   color:#aeb3ba;
@@ -103,7 +107,7 @@ ul.users li{
 }
 
 .user-alias-span{
-  background-color: #4a287a;
+  background-color: $themeColor;
   padding: 0.6em;
   margin: 0.6em;
   color:#aeb3ba;
@@ -121,9 +125,10 @@ ul.users li{
 
 .delete{
  font-size: 0.5em;
- color: red;
+ color: $themeColor;
  margin-left: 97%;
-
+ border: none;
+ background-color: rgba(245, 245, 245, 0.3) !important;
 }
 
 .dropzone{
@@ -133,7 +138,7 @@ ul.users li{
 .task-placeholder{
   height:110px;
   width:260px;
-  background-color: #4a287a;
+  background-color: $themeColor;
   border-radius: 5px;
   margin-bottom: 10px;
 
@@ -195,4 +200,18 @@ h4.sub-title{
 
 .g-signin2{
   margin-top: 8px;
+}
+
+
+.list-of-tasklist::-webkit-scrollbar {
+    width: 1em;
+}
+
+.list-of-tasklist::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.list-of-tasklist::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.5);
+  outline: 1px solid rgba(255,255,255,0.5);
 }

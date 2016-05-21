@@ -9,14 +9,14 @@ app.TaskListView = Backbone.View.extend({
   initialize:function(){
       //this.model.on('add', this.reRender, this);
       this.model.get('tasks').on('add',this.reRender,this);
-      this.model.get('tasks').on('reset',this.reRender,this);
+      this.model.get('tasks').on('reset',this.reRender2,this);
       this.model.get('tasks').on('remove',this.reRender,this);
       this.model.get('tasks').on('change',this.reRender,this);
      //this.model('add', this.reRender, this);
   },
 
   reRender:function(e){
-        console.log("RERENDER PROJECT");
+        //console.log("RERENDER PROJECT");
     this.render();
 
     // if(app.norerender >= 2) {
@@ -29,9 +29,15 @@ app.TaskListView = Backbone.View.extend({
            //projectView.render();
     },
 
+
+    reRender2:function(e){
+          //console.log("reset tasklist");
+      this.render();
+    },
+
   events:{
       'submit form.add-task':'addTask',
-      'click  .delete': 'deleteTask',
+      'click  .del-task': 'deleteTask',
       'click  .dropzone': 'openTask',
       'hover form.add-task':'showAddTask'
   },
@@ -44,7 +50,6 @@ app.TaskListView = Backbone.View.extend({
     event.stopPropagation();
     event.stopImmediatePropagation();
 
-      console.log($(event.currentTarget));
     taskId_str =$(event.currentTarget).attr('id').replace( /[^\d.]/g, '' );
     taskId = parseInt(taskId_str);
     console.log(taskId);
@@ -102,7 +107,6 @@ app.TaskListView = Backbone.View.extend({
 
   deleteTask:function(event){
     event.stopPropagation();
-    console.log("delete");
     taskId_str = $(event.target).attr('id').replace ( /[^\d.]/g, '' );
     taskId = parseInt(taskId_str);
     tasklist = this.model;
@@ -131,8 +135,6 @@ app.TaskListView = Backbone.View.extend({
 
     var taskListPosition =  taskList.get('position');
     this.$el.attr('position', taskListPosition);
-
-    console.log(taskListPosition);
 
 
 

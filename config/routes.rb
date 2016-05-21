@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/tasklists' => 'task_lists#index'
   post '/tasklists' => 'task_lists#create'
   post '/tasklists/sort' => 'task_lists#sort'
+  delete '/tasklists/:id' => 'task_lists#destroy'
 
 
 
