@@ -215,3 +215,39 @@ h4.sub-title{
   background-color: rgba(255,255,255,0.5);
   outline: 1px solid rgba(255,255,255,0.5);
 }
+
+.app-description{
+  margin-top: 60px;
+}
+
+.github-links{
+  margin-top: 60px;
+}
+
+.signup-form{
+  margin: 50px auto;
+  width: 65%;
+  color: $themeColor;
+}
+.signup-form .form-group{
+  margin:40px;
+}
+
+.login-form .form-group{
+  margin:40px;
+}
+.login-form{
+ margin: 100px auto;
+ width: 55%;
+ color: $themeColor;
+}
+
+.new-project-form .form-group{
+  margin:40px;
+}
+
+.new-project-form{
+ margin: 30px auto;
+ width: 65%;
+ color: $themeColor;
+}

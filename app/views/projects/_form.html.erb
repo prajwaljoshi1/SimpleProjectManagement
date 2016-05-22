@@ -4,42 +4,39 @@
     <%= form_for(@project, :html => { class: "form-horizontal", role: "form"}) do  |f|%>
 
   <div class="form-group">
-    <div class="col-sm-offset-1 control-label col-sm-2">
-      <%= f.label :title %>
+    <div class="col-sm-offset-1 control-label col-sm-1">
     </div>
-    <div class="col-sm-9">
-    <%= f.text_field :title, class:"form-control", placeholder: "Enter Project Name", autofocus: true %>
+    <div class="col-sm-8">
+    <%= f.text_field :title, class:"form-control input-lg", placeholder: "Your project name", autofocus: true %>
     </div>
   </div>
 
 <div class="form-group">
-  <div class="col-sm-offset-1 control-label col-sm-2">
-    <%= f.label :organisation %>
+  <div class="col-sm-offset-1 control-label col-sm-1">
   </div>
-  <div class="col-sm-9">
-  <%= f.text_field :organisation, rows: 10, class: "form-control", placeholder: "Enter Organisation Name" %>
+  <div class="col-sm-8">
+  <%= f.text_field :organisation, rows: 10, class: "form-control input-lg", placeholder: "Your team name" %>
   </div>
 </div>
 
 
 <div class="form-group">
-  <div class="col-sm-offset-1 control-label col-sm-2">
-    <%= f.label :description %>
+  <div class="col-sm-offset-1 control-label col-sm-1">
   </div>
-  <div class="col-sm-9">
-  <%= f.text_field :description, rows: 5, class: "form-control", placeholder: "Describe your Project" %>
+  <div class="col-sm-8">
+  <%= f.text_area :description, rows: 5, class: "form-control input-lg ", placeholder: "write something about your project" %>
   </div>
 </div>
 
 
 <div class="form-group">
-  <div class="col-sm-offset-5 col-sm-7">
+  <div align="center">
     <%  if @project.new_record? %>
-      <%= f.submit "Create", class: "btn btn-primary btn-lg" %>
+      <%= f.submit "Create", class: "btn btn-default btn-lg" %>
     <%else%>
-      <%= f.submit "Edit", class: "btn btn-primary btn-lg" %>
+      <%= f.submit "Edit", class: "btn btn-default btn-lg" %>
     <% end  %>
-  <%= link_to " Cancel ", root_path , class: "btn btn-primary btn-lg"%>
+  <%= link_to " Cancel ", root_path , class: "btn btn-default btn-lg"%>
   </div>
 </div>
 
