@@ -89,6 +89,7 @@ input:focus {
     font:2em;
     font-weight: bold;
     text-align:center;
+    margin-bottom: 60px;;
 }
 
 .task-alias{
@@ -250,4 +251,31 @@ h4.sub-title{
  margin: 30px auto;
  width: 65%;
  color: $themeColor;
+}
+.modal-content{
+  background-color: #9584A7;
+  color:$themeColor;
+}
+.modal-header{
+  text-align: center;
+}
+
+.btn-primary{
+  background-color: #fff;
+  color:$themeColor;
+}
+
+.btn-primary:hover{
+  background-color: #fff;
+  color:$themeColor;
+}
+
+.btn-primary:focus{
+  background-color: #fff;
+  color:$themeColor;
+}
+
+.post-btn{
+  margin: 5px;
+  margin-left: 10px;
 }

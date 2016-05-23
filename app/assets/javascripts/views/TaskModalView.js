@@ -7,6 +7,8 @@ app.TaskModalView = Backbone.View.extend({
      this.model.get('task_comments').on('add', this.render, this);
    },
 
+   id:'modal',
+
    events: {
    'submit form#add-comment': 'addComment'
   },

@@ -68,7 +68,9 @@ app.TaskListView = Backbone.View.extend({
       });
       var modal = new Backbone.BootstrapModal({
         content: taskModalView,
+        allowCancel: false,
         title: taskTitle,
+        okText: 'close',
         animate: true
       }).open(function(){ console.log('clicked OK') });
 
